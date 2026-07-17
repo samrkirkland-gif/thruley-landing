@@ -217,7 +217,7 @@ footer{padding:44px 0;border-top:1px solid rgba(255,255,255,.08)}
 .brand{transition:opacity .2s ease}.brand:hover{opacity:.82}
 .interest input:hover{border-color:rgba(77,125,254,.35)}
 /* scroll reveal — hidden only when JS adds html.anim; :where() keeps specificity 0 so .in wins */
-html.anim :where(header .receipt,section .eyebrow,section h2,section p.lede,section p.big,section .card,section .chip,section .tstep,section .pcard,section .mcard,section .faq details,section .prodlist,section .phone,section .integ,section .price,section .webcard,section .laptopwrap,section .lifeband,section .shot,section .mobshot){opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+html.anim :where(header .receipt,section .eyebrow,section h2,section p.lede,section p.big,section .card,section .chip,section .tstep,section .pcard,section .mcard,section .faq details,section .prodlist,section .phone,section .integ,section .price,section .webcard,section .laptopwrap,section .lifeband,section .shot,section .mobshot,section .herodevice){opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 html.anim .in{opacity:1 !important;transform:none !important}
 html.anim .tl::before{transform:scaleY(0);transform-origin:top center;transition:transform 1.2s cubic-bezier(.4,0,.2,1)}
 html.anim .tl.in::before{transform:scaleY(1)}
@@ -294,6 +294,9 @@ html.anim .tl.in::before{transform:scaleY(1)}
 .duo .deskshot{margin-top:0}
 .mobshot{position:absolute;right:-6px;bottom:-40px;width:214px;height:auto;filter:drop-shadow(0 34px 62px rgba(0,0,0,.72));z-index:3}
 @media(max-width:820px){.mobshot{position:static;display:block;width:152px;margin:-24px auto 0;right:auto;bottom:auto;filter:drop-shadow(0 16px 30px rgba(0,0,0,.6))}}
+/* hero device shot — real MacBook + iPhone with v3.0 UI */
+.herodevice{margin:44px auto 0;max-width:1120px}
+.herodevice img{width:100%;height:auto;display:block}
 @media(max-width:640px){.lifeband img{aspect-ratio:4/5;object-position:66% 32%}.lifeband::after{background:linear-gradient(0deg,rgba(5,7,13,.96) 10%,rgba(5,7,13,.35) 58%,transparent)}.lifecap{top:auto;bottom:0;transform:none;padding-bottom:36px;max-width:100%}}
 </style>
 <script>try{if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.className+=' anim';}}catch(e){}</script>
@@ -573,12 +576,8 @@ html.anim .tl.in::before{transform:scaleY(1)}
     <div class="eyebrow ctr">On every screen</div>
     <h2 class="ctr">Your whole pipeline, one calm screen.</h2>
     <p class="lede ctr mx">Every listing, every deadline, every check in one dark, quiet dashboard, the kind you glance at, not one you live in. At your desk or in your pocket.</p>
-    <div class="duo">
-      <div class="shot deskshot">
-        <div class="chrome"><i></i><i></i><i></i><span class="u">thruley.com/app</span></div>
-        <img src="assets/ui-d-overview.png" alt="The Thruley dashboard: today's handled tasks, approvals waiting for you, a live listing kickoff, the activity feed and the QLD compliance ledger" loading="lazy">
-      </div>
-      <img class="mobshot" src="assets/ui-m-home-phone.png" alt="Thruley on your phone: what was handled overnight, what needs you, and one-tap approvals" loading="lazy">
+    <div class="herodevice">
+      <img src="assets/hero-devices.png" alt="Thruley on a MacBook and iPhone — the full dashboard on your desk, the mobile app in your pocket" loading="lazy">
     </div>
   </div>
 </section>
@@ -741,7 +740,7 @@ html.anim .tl.in::before{transform:scaleY(1)}
   if(!animOn){ try{var _s=document.querySelector('.webcard svg'); if(_s&&_s.pauseAnimations) _s.pauseAnimations();}catch(e){} return; }
 
   // ---- scroll reveals ----
-  var sel='header .receipt,section .eyebrow,section h2,section p.lede,section p.big,section .card,section .chip,section .tstep,section .pcard,section .mcard,section .faq details,section .prodlist,section .phone,section .integ,section .price,section .webcard,section .laptopwrap,section .lifeband,section .shot,section .mobshot,.tl';
+  var sel='header .receipt,section .eyebrow,section h2,section p.lede,section p.big,section .card,section .chip,section .tstep,section .pcard,section .mcard,section .faq details,section .prodlist,section .phone,section .integ,section .price,section .webcard,section .laptopwrap,section .lifeband,section .shot,section .mobshot,section .herodevice,.tl';
   var els=[].slice.call(document.querySelectorAll(sel));
   var seen=new Map();
   els.forEach(function(el){var p=el.parentElement,n=seen.get(p)||0;seen.set(p,n+1);el.style.transitionDelay=(Math.min(n,6)*0.07)+'s';});
