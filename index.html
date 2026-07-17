@@ -217,13 +217,13 @@ footer{padding:44px 0;border-top:1px solid rgba(255,255,255,.08)}
 .brand{transition:opacity .2s ease}.brand:hover{opacity:.82}
 .interest input:hover{border-color:rgba(77,125,254,.35)}
 /* scroll reveal — hidden only when JS adds html.anim; :where() keeps specificity 0 so .in wins */
-html.anim :where(header .receipt,section .eyebrow,section h2,section p.lede,section p.big,section .card,section .chip,section .tstep,section .pcard,section .mcard,section .faq details,section .prodlist,section .phone,section .integ,section .price,section .webcard){opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+html.anim :where(header .receipt,section .eyebrow,section h2,section p.lede,section p.big,section .card,section .chip,section .tstep,section .pcard,section .mcard,section .faq details,section .prodlist,section .phone,section .integ,section .price,section .webcard,section .laptopwrap,section .lifeband){opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 html.anim .in{opacity:1 !important;transform:none !important}
 html.anim .tl::before{transform:scaleY(0);transform-origin:top center;transition:transform 1.2s cubic-bezier(.4,0,.2,1)}
 html.anim .tl.in::before{transform:scaleY(1)}
 /* ---- data web (Thruley reads everything, then does the work) ---- */
 .webcard{margin-top:46px;border-radius:24px;border:1px solid var(--glass-line);background:radial-gradient(ellipse 60% 80% at 50% 50%,#0C1428,#05070D 78%);overflow-x:auto;padding:24px 20px}
-.webcard svg{display:block;width:100%;min-width:740px;height:auto}
+.webcard svg{display:block;width:100%;min-width:900px;height:auto}
 .webcard .wl{fill:none;stroke:rgba(77,125,254,.34);stroke-width:1.4;stroke-dasharray:5 9;animation:flow 1.1s linear infinite}
 .webcard .wl.e{stroke:rgba(255,107,61,.4)}
 @keyframes flow{to{stroke-dashoffset:-14}}
@@ -240,6 +240,50 @@ html.anim .tl.in::before{transform:scaleY(1)}
   .webcard .wl,.webcard .corering{animation:none}
   .btn:hover::after{animation:none}
 }
+/* AML ember card — same base/padding as the others, ember accent only */
+.mcard.ember{border-color:rgba(255,107,61,.4)}
+/* ratio chips under the data web */
+.webratio{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:20px}
+.webratio span{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);border:1px solid var(--glass-line);border-radius:100px;padding:8px 16px}
+.webratio span.e{color:var(--ember);border-color:rgba(255,107,61,.4)}
+.webratio span.p{color:var(--pulse);border-color:rgba(77,125,254,.4)}
+/* device band — dark laptop showing the product (recognition, no white dashboards) */
+.laptopwrap{margin-top:52px;display:flex;flex-direction:column;align-items:center}
+.laptop{width:100%;max-width:940px;border-radius:16px 16px 0 0;border:1px solid rgba(255,255,255,.14);border-bottom:none;background:#0B1120;box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 80px rgba(77,125,254,.12);overflow:hidden}
+.laptop .lidbar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.laptop .lidbar i{width:9px;height:9px;border-radius:50%;background:#232D45;display:inline-block}
+.laptop .lidbar .u{flex:1;max-width:300px;margin:0 auto;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--mist);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:8px;padding:5px 12px}
+.dash{background:linear-gradient(180deg,#0A1226,#070B16);padding:22px;display:grid;grid-template-columns:184px 1fr;gap:18px;min-height:432px}
+.dnav{display:flex;flex-direction:column;gap:5px}
+.dnav .dbrand{display:flex;align-items:center;gap:8px;margin-bottom:14px;padding:0 4px}.dnav .dbrand svg{width:16px;height:16px}.dnav .dbrand span{font-family:var(--display);font-weight:700;font-size:15px;color:var(--white)}
+.dnav a{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--mist);padding:9px 12px;border-radius:9px}
+.dnav a.on{background:rgba(77,125,254,.14);border:1px solid rgba(77,125,254,.35);color:var(--white)}
+.dmain{display:flex;flex-direction:column;gap:11px}
+.dtop{display:flex;justify-content:space-between;align-items:baseline}
+.dtop h5{font-family:var(--display);font-size:19px;font-weight:700;color:var(--white)}
+.dtop .sub{font-family:var(--mono);font-size:9.5px;color:var(--mist);letter-spacing:.1em}
+.dstat{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.dstat .s{background:rgba(255,255,255,.05);border:1px solid var(--glass-line);border-radius:12px;padding:12px 14px}
+.dstat .s .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist)}
+.dstat .s .v{font-family:var(--display);font-size:20px;font-weight:700;color:var(--white);margin-top:3px}
+.dstat .s .v b{color:var(--pulse)}
+.drow{display:flex;justify-content:space-between;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid var(--glass-line);border-radius:12px;padding:12px 15px}
+.drow.e{background:rgba(255,107,61,.09);border-color:rgba(255,107,61,.38)}
+.drow .addr{font-family:var(--display);font-weight:600;color:var(--white);font-size:13.5px}
+.drow .st{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--mist);margin-top:2px}
+.drow .pill{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--pulse);border:1px solid rgba(77,125,254,.5);border-radius:20px;padding:5px 11px;white-space:nowrap}
+.drow.e .pill{color:var(--ember);border-color:rgba(255,107,61,.5)}
+.laptopbase{width:100%;max-width:1040px;height:15px;background:linear-gradient(180deg,#161B2A,#0B0F1A);border:1px solid rgba(255,255,255,.12);border-radius:0 0 16px 16px;position:relative}
+.laptopbase::after{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:130px;height:5px;border-radius:0 0 8px 8px;background:rgba(255,255,255,.09)}
+@media(max-width:760px){.dash{grid-template-columns:1fr;gap:14px}.dnav{flex-direction:row;flex-wrap:wrap;gap:6px}.dnav .dbrand{width:100%}.laptopbase{display:none}.laptop{border-radius:16px}.dstat{grid-template-columns:1fr 1fr}}
+/* in-situ lifestyle band */
+.lifeband{position:relative;margin-top:16px;border-radius:24px;overflow:hidden;border:1px solid var(--glass-line);box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.lifeband img{width:100%;display:block;aspect-ratio:16/8;object-fit:cover;object-position:60% 42%;filter:saturate(.9) brightness(.82) contrast(1.03)}
+.lifeband::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,7,13,.92) 0%,rgba(5,7,13,.5) 40%,transparent 72%),linear-gradient(0deg,rgba(5,7,13,.6),transparent 50%)}
+.lifecap{position:absolute;left:0;top:50%;transform:translateY(-50%);max-width:600px;padding:0 clamp(28px,5vw,64px);z-index:1}
+.lifecap .lq{font-family:var(--display);font-weight:700;font-size:clamp(24px,3.4vw,40px);letter-spacing:-0.03em;line-height:1.12;color:var(--white);margin-top:16px}
+.lifecap .lq b{color:var(--pulse);font-weight:700}
+@media(max-width:640px){.lifeband img{aspect-ratio:4/5;object-position:66% 32%}.lifeband::after{background:linear-gradient(0deg,rgba(5,7,13,.96) 10%,rgba(5,7,13,.35) 58%,transparent)}.lifecap{top:auto;bottom:0;transform:none;padding-bottom:36px;max-width:100%}}
 </style>
 <script>try{if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.className+=' anim';}}catch(e){}</script>
 </head><body>
@@ -330,8 +374,77 @@ html.anim .tl.in::before{transform:scaleY(1)}
     <div class="eyebrow ctr">One assistant, wired in</div>
     <h2 class="ctr">It reads everything. Then it does the work.</h2>
     <p class="lede ctr mx">Thruley plugs into your inbox, CRM, calendar and messages, works out what each deal needs next, and takes the step, in your voice, under your name.</p>
-    <div class="webcard" aria-label="Diagram: Thruley reads email, CRM, calendar, messages and notes, then handles Form 6, vendor updates, photographer bookings, AML checks, trust deposits and cooling-off."></div>
-    <div class="weblabel"><span>· It reads</span><span>Thruley</span><span>It handles ·</span></div>
+    <div class="webcard" aria-label="One listing, start to settlement: the agent has two human moments (listing won, approve campaign) while Thruley runs 27 system actions.">
+      <svg viewBox="0 0 1040 470" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace">
+        <defs>
+          <linearGradient id="eb1" gradientUnits="userSpaceOnUse" x1="88" y1="0" x2="340" y2="0"><stop offset="0" stop-color="#FF6B3D"/><stop offset="1" stop-color="#4D7DFE"/></linearGradient>
+          <linearGradient id="be1" gradientUnits="userSpaceOnUse" x1="345" y1="0" x2="580" y2="0"><stop offset="0" stop-color="#4D7DFE"/><stop offset="1" stop-color="#FF6B3D"/></linearGradient>
+          <linearGradient id="eb2" gradientUnits="userSpaceOnUse" x1="592" y1="0" x2="810" y2="0"><stop offset="0" stop-color="#FF6B3D"/><stop offset="1" stop-color="#4D7DFE"/></linearGradient>
+          <filter id="ng" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="4"/></filter>
+        </defs>
+        <g stroke="rgba(122,150,220,0.07)" fill="none" stroke-width="1">
+          <path d="M60 60 C 300 180, 700 40, 1000 130"/>
+          <path d="M40 420 C 320 320, 640 460, 1000 350"/>
+          <path d="M200 30 C 400 260, 620 120, 900 440"/>
+        </g>
+        <g fill="rgba(122,150,220,0.25)"><circle cx="215" cy="63" r="2"/><circle cx="705" cy="63" r="2"/><circle cx="470" cy="415" r="2"/><circle cx="905" cy="415" r="2"/><circle cx="130" cy="360" r="2"/></g>
+        <g stroke="url(#eb1)" fill="none" stroke-width="1.3" opacity="0.75">
+          <path id="w1" d="M88 235 C 190 235, 250 85, 320 85"/>
+          <path d="M88 235 C 190 235, 255 155, 345 155"/>
+          <path d="M88 235 C 180 235, 240 230, 325 230"/>
+          <path d="M88 235 C 190 235, 255 305, 340 305"/>
+          <path d="M88 235 C 190 235, 250 380, 320 380"/>
+        </g>
+        <g stroke="url(#be1)" fill="none" stroke-width="1.1" opacity="0.55">
+          <path d="M330 85 C 450 85, 510 235, 577 235"/>
+          <path d="M355 155 C 460 155, 515 235, 577 235"/>
+          <path d="M335 230 C 450 230, 510 235, 577 235"/>
+          <path d="M350 305 C 460 305, 515 235, 577 235"/>
+          <path d="M330 380 C 450 380, 510 235, 577 235"/>
+        </g>
+        <g stroke="url(#eb2)" fill="none" stroke-width="1.3" opacity="0.75">
+          <path id="w2" d="M593 235 C 680 235, 720 100, 792 100"/>
+          <path d="M593 235 C 685 235, 725 178, 822 178"/>
+          <path d="M593 235 C 685 235, 725 298, 797 298"/>
+          <path d="M593 235 C 680 235, 720 372, 817 372"/>
+        </g>
+        <g stroke="rgba(77,125,254,0.6)" fill="none" stroke-width="1.1">
+          <path id="w3" d="M802 100 C 890 100, 925 235, 967 235"/>
+          <path d="M832 178 C 905 178, 930 235, 967 235"/>
+          <path d="M807 298 C 895 298, 928 235, 967 235"/>
+          <path d="M827 372 C 900 372, 928 235, 967 235"/>
+        </g>
+        <circle r="3" fill="#FF6B3D"><animateMotion dur="4s" repeatCount="indefinite" path="M88 235 C 190 235, 250 85, 320 85"/></circle>
+        <circle r="2.6" fill="#4D7DFE"><animateMotion dur="4.6s" begin="0.6s" repeatCount="indefinite" path="M88 235 C 190 235, 250 380, 320 380"/></circle>
+        <circle r="2.6" fill="#4D7DFE"><animateMotion dur="5s" begin="1.2s" repeatCount="indefinite" path="M335 230 C 450 230, 510 235, 577 235"/></circle>
+        <circle r="2.6" fill="#4D7DFE"><animateMotion dur="4.4s" begin="0.3s" repeatCount="indefinite" path="M593 235 C 685 235, 725 178, 822 178"/></circle>
+        <circle r="2.6" fill="#4D7DFE"><animateMotion dur="4.8s" begin="1.8s" repeatCount="indefinite" path="M802 100 C 890 100, 925 235, 967 235"/></circle>
+        <circle cx="80" cy="235" r="14" fill="#FF6B3D" opacity="0.35" filter="url(#ng)"/>
+        <circle cx="80" cy="235" r="8" fill="#FF6B3D"/>
+        <circle cx="80" cy="235" r="14" fill="none" stroke="rgba(255,107,61,0.5)" stroke-width="1"><animate attributeName="r" values="12;17;12" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;0;0.6" dur="3s" repeatCount="indefinite"/></circle>
+        <text x="80" y="200" text-anchor="middle" font-size="10" letter-spacing="2" fill="#FF6B3D">LISTING WON</text>
+        <text x="80" y="272" text-anchor="middle" font-size="8.5" letter-spacing="1.5" fill="#A9B3CA">AGENT · HUMAN MOMENT 1</text>
+        <g fill="#4D7DFE"><circle cx="325" cy="85" r="4.5"/><circle cx="350" cy="155" r="4.5"/><circle cx="330" cy="230" r="4.5"/><circle cx="345" cy="305" r="4.5"/><circle cx="325" cy="380" r="4.5"/></g>
+        <g font-size="8.5" letter-spacing="1.5" fill="#A9B3CA" text-anchor="middle">
+          <text x="325" y="70">FORM 6 DRAFTED</text><text x="350" y="140">VENDOR ID VERIFIED</text><text x="330" y="215">CRM RECORD BUILT</text><text x="345" y="290">PHOTOGRAPHER BOOKED</text><text x="325" y="365">SIGNBOARD ORDERED</text>
+        </g>
+        <circle cx="585" cy="235" r="10" fill="#FF6B3D" opacity="0.3" filter="url(#ng)"/>
+        <circle cx="585" cy="235" r="6" fill="#FF6B3D"/>
+        <circle cx="585" cy="235" r="11" fill="none" stroke="rgba(255,107,61,0.5)" stroke-width="1"><animate attributeName="r" values="9;14;9" dur="3s" begin="1s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;0;0.6" dur="3s" begin="1s" repeatCount="indefinite"/></circle>
+        <text x="585" y="205" text-anchor="middle" font-size="10" letter-spacing="2" fill="#FF6B3D">APPROVE CAMPAIGN</text>
+        <text x="585" y="268" text-anchor="middle" font-size="8.5" letter-spacing="1.5" fill="#A9B3CA">20 SECONDS · HUMAN MOMENT 2</text>
+        <g fill="#4D7DFE"><circle cx="797" cy="100" r="4.5"/><circle cx="827" cy="178" r="4.5"/><circle cx="802" cy="298" r="4.5"/><circle cx="822" cy="372" r="4.5"/></g>
+        <g font-size="8.5" letter-spacing="1.5" fill="#A9B3CA" text-anchor="middle">
+          <text x="797" y="85">CAMPAIGN LIVE</text><text x="827" y="163">PORTALS UPLOADED</text><text x="802" y="283">RUN SHEET SENT</text><text x="822" y="357">FOLLOW-UPS ×12</text>
+        </g>
+        <circle cx="975" cy="235" r="16" fill="#4D7DFE" opacity="0.35" filter="url(#ng)"/>
+        <circle cx="975" cy="235" r="7" fill="#4D7DFE"/>
+        <text x="975" y="200" text-anchor="middle" font-size="10" letter-spacing="2" fill="#4D7DFE">SETTLED</text>
+        <text x="975" y="272" text-anchor="middle" font-size="8.5" letter-spacing="1.5" fill="#A9B3CA">FILE ARCHIVED</text>
+        <text x="520" y="448" text-anchor="middle" font-size="8.5" letter-spacing="2" fill="rgba(169,179,202,0.55)">ONE LISTING · SHOWING 9 OF 27 SYSTEM ACTIONS · EVERY EMBER NODE IS THE ONLY TIME A HUMAN TOUCHED IT</text>
+      </svg>
+    </div>
+    <div class="webratio"><span class="e">Ember · 2 human moments</span><span class="p">Pulse · 27 system actions</span><span>Ratio · one yes runs 13.5 tasks</span></div>
   </div>
 </section>
 
@@ -406,6 +519,39 @@ html.anim .tl.in::before{transform:scaleY(1)}
   </div>
 </section>
 
+<!-- DEVICE -->
+<section id="device">
+  <div class="wrap">
+    <div class="eyebrow ctr">On your desk</div>
+    <h2 class="ctr">Your whole pipeline, one calm screen.</h2>
+    <p class="lede ctr mx">Every listing, every deadline, every check in one dark, quiet dashboard, the kind you glance at, not one you live in.</p>
+    <div class="laptopwrap">
+      <div class="laptop">
+        <div class="lidbar"><i></i><i></i><i></i><span class="u">thruley.com/app</span></div>
+        <div class="dash">
+          <div class="dnav">
+            <div class="dbrand"><svg viewBox="0 0 100 100"><path d="M8 38C34 31 63 26 92 21L53 45C47 61 41 76 36 92C38.5 78 40 66 41 53Z" fill="#F2F5FF"/></svg><span>thruley</span></div>
+            <a class="on">Pipeline</a><a>Approvals</a><a>Compliance</a><a>Trust</a><a>Assistants</a>
+          </div>
+          <div class="dmain">
+            <div class="dtop"><h5>Today</h5><span class="sub">WED · 6 HANDLED · 1 FOR YOU</span></div>
+            <div class="dstat">
+              <div class="s"><div class="k">On track</div><div class="v"><b>12</b> listings</div></div>
+              <div class="s"><div class="k">Checks passed</div><div class="v"><b>34</b> today</div></div>
+              <div class="s"><div class="k">Hours saved</div><div class="v"><b>9.2</b></div></div>
+            </div>
+            <div class="drow"><div><div class="addr">14 Rose St, Bilinga</div><div class="st">Form 6 checked · vendor update sent</div></div><span class="pill">On track</span></div>
+            <div class="drow"><div><div class="addr">8 Bay Tce, Kirra</div><div class="st">Form 2 pack ordered · AML cleared</div></div><span class="pill">On track</span></div>
+            <div class="drow e"><div><div class="addr">2 Musgrave Ave</div><div class="st">Price change drafted · needs your OK</div></div><span class="pill">Approve</span></div>
+            <div class="drow"><div><div class="addr">51 Golden Four Dr</div><div class="st">Photographer booked · copy drafted</div></div><span class="pill">On track</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="laptopbase"></div>
+    </div>
+  </div>
+</section>
+
 <!-- PERSONAS -->
 <section>
   <div class="wrap">
@@ -423,6 +569,19 @@ html.anim .tl.in::before{transform:scaleY(1)}
   </div>
 </section>
 
+<!-- IN-SITU -->
+<section id="situ">
+  <div class="wrap">
+    <div class="lifeband">
+      <img src="assets/life-principal.jpg" alt="An agent reviewing a listing while Thruley handles the admin behind the scenes" loading="lazy">
+      <div class="lifecap">
+        <div class="eyebrow">In the room, not the software</div>
+        <div class="lq">You do the part only you can do. <b>Thruley does everything after.</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- MOAT -->
 <section id="moat">
   <div class="wrap">
@@ -432,7 +591,7 @@ html.anim .tl.in::before{transform:scaleY(1)}
     <div class="grid3" style="margin-top:46px">
       <div class="card mcard"><h4><span class="tk">✓</span> Form 6</h4><p>Checked for every required field before it goes out. The 90-day sole-agency term and reappointment window tracked automatically.</p></div>
       <div class="card mcard"><h4><span class="tk">✓</span> Form 2 disclosure</h4><p>Certificate pack ordered at listing so disclosure is ready before any buyer signs. Miss it and the buyer can walk up to settlement.</p></div>
-      <div class="lg mcard ember"><h4><span class="tk">✓</span> AML checks <span class="tag">New · 1 Jul</span></h4><p>Agents are now AUSTRAC reporting entities. Vendor and buyer identity checks built into the workflow, records kept 7 years.</p></div>
+      <div class="card mcard ember"><h4><span class="tk">✓</span> AML checks <span class="tag">New · 1 Jul</span></h4><p>Agents are now AUSTRAC reporting entities. Vendor and buyer identity checks built into the workflow, records kept 7 years.</p></div>
       <div class="card mcard"><h4><span class="tk">✓</span> Trust accounting</h4><p>Deposits receipted immediately and banked by the next business day. Ledger reconciled, audit-ready.</p></div>
       <div class="card mcard"><h4><span class="tk">✓</span> Forms 7 &amp; 8</h4><p>Beneficial-interest disclosure to the seller and buyer disclosure handled at the right moment, not remembered at the last one.</p></div>
       <div class="card mcard"><h4><span class="tk">✓</span> The rest</h4><p>Pool safety certificates, smoke alarm compliance, safety-switch declarations, cooling-off timers, auction bidder registration, CPD deadlines.</p></div>
@@ -558,11 +717,10 @@ html.anim .tl.in::before{transform:scaleY(1)}
   }
 
   var animOn=document.documentElement.classList.contains('anim');
-  buildWeb(animOn);
-  if(!animOn) return; // reduced motion / no IO: everything already visible, static web
+  if(!animOn){ try{var _s=document.querySelector('.webcard svg'); if(_s&&_s.pauseAnimations) _s.pauseAnimations();}catch(e){} return; }
 
   // ---- scroll reveals ----
-  var sel='header .receipt,section .eyebrow,section h2,section p.lede,section p.big,section .card,section .chip,section .tstep,section .pcard,section .mcard,section .faq details,section .prodlist,section .phone,section .integ,section .price,section .webcard,.tl';
+  var sel='header .receipt,section .eyebrow,section h2,section p.lede,section p.big,section .card,section .chip,section .tstep,section .pcard,section .mcard,section .faq details,section .prodlist,section .phone,section .integ,section .price,section .webcard,section .laptopwrap,section .lifeband,.tl';
   var els=[].slice.call(document.querySelectorAll(sel));
   var seen=new Map();
   els.forEach(function(el){var p=el.parentElement,n=seen.get(p)||0;seen.set(p,n+1);el.style.transitionDelay=(Math.min(n,6)*0.07)+'s';});
