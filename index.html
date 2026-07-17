@@ -217,7 +217,7 @@ footer{padding:44px 0;border-top:1px solid rgba(255,255,255,.08)}
 .brand{transition:opacity .2s ease}.brand:hover{opacity:.82}
 .interest input:hover{border-color:rgba(77,125,254,.35)}
 /* scroll reveal — hidden only when JS adds html.anim; :where() keeps specificity 0 so .in wins */
-html.anim :where(header .receipt,section .eyebrow,section h2,section p.lede,section p.big,section .card,section .chip,section .tstep,section .pcard,section .mcard,section .faq details,section .prodlist,section .phone,section .integ,section .price,section .webcard,section .laptopwrap,section .lifeband){opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+html.anim :where(header .receipt,section .eyebrow,section h2,section p.lede,section p.big,section .card,section .chip,section .tstep,section .pcard,section .mcard,section .faq details,section .prodlist,section .phone,section .integ,section .price,section .webcard,section .laptopwrap,section .lifeband,section .shot){opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 html.anim .in{opacity:1 !important;transform:none !important}
 html.anim .tl::before{transform:scaleY(0);transform-origin:top center;transition:transform 1.2s cubic-bezier(.4,0,.2,1)}
 html.anim .tl.in::before{transform:scaleY(1)}
@@ -283,6 +283,12 @@ html.anim .tl.in::before{transform:scaleY(1)}
 .lifecap{position:absolute;left:0;top:50%;transform:translateY(-50%);max-width:600px;padding:0 clamp(28px,5vw,64px);z-index:1}
 .lifecap .lq{font-family:var(--display);font-weight:700;font-size:clamp(24px,3.4vw,40px);letter-spacing:-0.03em;line-height:1.12;color:var(--white);margin-top:16px}
 .lifecap .lq b{color:var(--pulse);font-weight:700}
+/* framed product screenshot (reskinned UI renders) */
+.shot{margin-top:46px;border-radius:16px;overflow:hidden;border:1px solid var(--glass-line);background:#0B1120;box-shadow:0 44px 100px rgba(0,0,0,.6),0 0 90px rgba(77,125,254,.10)}
+.shot .chrome{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.shot .chrome i{width:9px;height:9px;border-radius:50%;background:#232D45;display:inline-block}
+.shot .chrome .u{flex:1;max-width:340px;margin:0 auto;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--mist);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:8px;padding:5px 12px}
+.shot img{display:block;width:100%;height:auto}
 @media(max-width:640px){.lifeband img{aspect-ratio:4/5;object-position:66% 32%}.lifeband::after{background:linear-gradient(0deg,rgba(5,7,13,.96) 10%,rgba(5,7,13,.35) 58%,transparent)}.lifecap{top:auto;bottom:0;transform:none;padding-bottom:36px;max-width:100%}}
 </style>
 <script>try{if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.className+=' anim';}}catch(e){}</script>
@@ -525,29 +531,9 @@ html.anim .tl.in::before{transform:scaleY(1)}
     <div class="eyebrow ctr">On your desk</div>
     <h2 class="ctr">Your whole pipeline, one calm screen.</h2>
     <p class="lede ctr mx">Every listing, every deadline, every check in one dark, quiet dashboard, the kind you glance at, not one you live in.</p>
-    <div class="laptopwrap">
-      <div class="laptop">
-        <div class="lidbar"><i></i><i></i><i></i><span class="u">thruley.com/app</span></div>
-        <div class="dash">
-          <div class="dnav">
-            <div class="dbrand"><svg viewBox="0 0 100 100"><path d="M8 38C34 31 63 26 92 21L53 45C47 61 41 76 36 92C38.5 78 40 66 41 53Z" fill="#F2F5FF"/></svg><span>thruley</span></div>
-            <a class="on">Pipeline</a><a>Approvals</a><a>Compliance</a><a>Trust</a><a>Assistants</a>
-          </div>
-          <div class="dmain">
-            <div class="dtop"><h5>Today</h5><span class="sub">WED · 6 HANDLED · 1 FOR YOU</span></div>
-            <div class="dstat">
-              <div class="s"><div class="k">On track</div><div class="v"><b>12</b> listings</div></div>
-              <div class="s"><div class="k">Checks passed</div><div class="v"><b>34</b> today</div></div>
-              <div class="s"><div class="k">Hours saved</div><div class="v"><b>9.2</b></div></div>
-            </div>
-            <div class="drow"><div><div class="addr">14 Rose St, Bilinga</div><div class="st">Form 6 checked · vendor update sent</div></div><span class="pill">On track</span></div>
-            <div class="drow"><div><div class="addr">8 Bay Tce, Kirra</div><div class="st">Form 2 pack ordered · AML cleared</div></div><span class="pill">On track</span></div>
-            <div class="drow e"><div><div class="addr">2 Musgrave Ave</div><div class="st">Price change drafted · needs your OK</div></div><span class="pill">Approve</span></div>
-            <div class="drow"><div><div class="addr">51 Golden Four Dr</div><div class="st">Photographer booked · copy drafted</div></div><span class="pill">On track</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="laptopbase"></div>
+    <div class="shot">
+      <div class="chrome"><i></i><i></i><i></i><span class="u">thruley.com/app</span></div>
+      <img src="assets/ui-d-overview.png" alt="The Thruley dashboard: today's handled tasks, approvals waiting for you, a live listing kickoff, the activity feed and the QLD compliance ledger" loading="lazy">
     </div>
   </div>
 </section>
@@ -558,13 +544,9 @@ html.anim .tl.in::before{transform:scaleY(1)}
     <div class="eyebrow ctr">Meet your assistant</div>
     <h2 class="ctr">Nine personalities. Pick the one that fits how you work.</h2>
     <p class="lede ctr mx">Choose a personality, rename them to suit your brand, and they're yours. Your clients only ever see the name you choose.</p>
-    <div class="pgrid">
-      <div class="lg pcard"><div class="av">D</div><h4>Donna</h4><small>Warm · relationship-led</small></div>
-      <div class="lg pcard"><div class="av">M</div><h4>Marcus</h4><small>Direct · high-volume</small></div>
-      <div class="lg pcard"><div class="av">P</div><h4>Priya</h4><small>Precise · compliance-first</small></div>
-      <div class="lg pcard"><div class="av">J</div><h4>Jack</h4><small>Casual · fast follow-up</small></div>
-      <div class="lg pcard"><div class="av">S</div><h4>Sofia</h4><small>Polished · prestige</small></div>
-      <div class="lg pcard"><div class="av">+</div><h4>Four more</h4><small>Nine in total, all yours to rename</small></div>
+    <div class="shot">
+      <div class="chrome"><i></i><i></i><i></i><span class="u">thruley.com/app · assistants</span></div>
+      <img src="assets/ui-d-personas.png" alt="Choose your assistant: nine personalities, each renamable, and your clients only ever see the name you choose" loading="lazy">
     </div>
   </div>
 </section>
@@ -603,24 +585,18 @@ html.anim .tl.in::before{transform:scaleY(1)}
 <!-- PRINCIPALS -->
 <section id="principals">
   <div class="wrap">
-    <div class="prodgrid rev">
-      <div>
-        <div class="eyebrow">For principals</div>
-        <h2>Your agents have their own style. Your agency should have one standard.</h2>
-        <p class="lede">Set your agency's process once. Thruley runs it across every agent, every listing, and you see exactly where every deal stands.</p>
-        <ul class="prodlist">
-          <li>Your playbook, <b>enforced on every agent</b></li>
-          <li>One <b>oversight dashboard</b>, real-time</li>
-          <li>New agents run your <b>standard from day one</b></li>
-        </ul>
-        <a href="#apply" class="btn pri lg-cta" style="margin-top:28px">Talk to us about your agency</a>
-      </div>
-      <div class="lg" style="padding:20px;align-self:stretch;display:flex;flex-direction:column;gap:10px;justify-content:center">
-        <div class="appgreet" style="margin-bottom:4px">Agency · live pipeline</div>
-        <div class="tile g"><div class="tl2"><div><div class="lab">Agent · Sarah</div><div class="val">7 deals on track</div></div><span class="act">100%</span></div></div>
-        <div class="tile g"><div class="tl2"><div><div class="lab">Agent · Tom</div><div class="val">4 deals on track</div></div><span class="act">100%</span></div></div>
-        <div class="tile e"><div class="tl2"><div><div class="lab">Agent · Dan · Form 6 due</div><div class="val">1 needs review</div></div><span class="act">Open</span></div></div>
-      </div>
+    <div class="eyebrow">For principals</div>
+    <h2>Your agents have their own style. Your agency should have one standard.</h2>
+    <p class="lede">Set your agency's process once. Thruley runs it across every agent, every listing, and you see exactly where every deal stands.</p>
+    <ul class="prodlist" style="max-width:660px">
+      <li>Your playbook, <b>enforced on every agent</b></li>
+      <li>One <b>oversight dashboard</b>, real-time</li>
+      <li>New agents run your <b>standard from day one</b></li>
+    </ul>
+    <a href="#apply" class="btn pri lg-cta" style="margin-top:28px">Talk to us about your agency</a>
+    <div class="shot">
+      <div class="chrome"><i></i><i></i><i></i><span class="u">thruley.com/app · agency oversight</span></div>
+      <img src="assets/ui-d-oversight.png" alt="Agency oversight: each agent's process adherence, active listings, and everything Thruley handled across the agency this week" loading="lazy">
     </div>
   </div>
 </section>
@@ -720,7 +696,7 @@ html.anim .tl.in::before{transform:scaleY(1)}
   if(!animOn){ try{var _s=document.querySelector('.webcard svg'); if(_s&&_s.pauseAnimations) _s.pauseAnimations();}catch(e){} return; }
 
   // ---- scroll reveals ----
-  var sel='header .receipt,section .eyebrow,section h2,section p.lede,section p.big,section .card,section .chip,section .tstep,section .pcard,section .mcard,section .faq details,section .prodlist,section .phone,section .integ,section .price,section .webcard,section .laptopwrap,section .lifeband,.tl';
+  var sel='header .receipt,section .eyebrow,section h2,section p.lede,section p.big,section .card,section .chip,section .tstep,section .pcard,section .mcard,section .faq details,section .prodlist,section .phone,section .integ,section .price,section .webcard,section .laptopwrap,section .lifeband,section .shot,.tl';
   var els=[].slice.call(document.querySelectorAll(sel));
   var seen=new Map();
   els.forEach(function(el){var p=el.parentElement,n=seen.get(p)||0;seen.set(p,n+1);el.style.transitionDelay=(Math.min(n,6)*0.07)+'s';});
