@@ -1,381 +1,464 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Thruley | Every process. Every deal. Every time.</title>
-<meta name="description" content="Thruley is the AI assistant for Queensland real estate agents. It runs everything after the lead: bookings, vendor updates, Form 6 and Form 2 compliance, AML checks. You approve what matters.">
-<meta property="og:title" content="Thruley | Every process. Every deal. Every time.">
-<meta property="og:description" content="The AI assistant that runs everything after the lead, built for QLD compliance. Founding Partners now open.">
+<title>Thruley | The AI back office for real estate</title>
+<meta name="description" content="Thruley reads your email, CRM and meeting notes, then handles the bookings, follow-ups, vendor updates and every form the Property Acts ask for — Form 6, Form 2, AML, trust. You keep the human work. Built for Queensland compliance.">
+<meta property="og:title" content="Thruley | Kill the dead admin.">
+<meta property="og:description" content="The AI back office for real estate. It runs everything after the lead and every compliance step, built for QLD. Founding Partners now open.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://thruley.com">
 <meta property="og:image" content="https://thruley.com/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://thruley.com/assets/og-image.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A1A2F'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23C1FF72'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#05070D">
+<!-- dart on ink -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2305070D'/%3E%3Cpath d='M14 42C36 36 62 31 88 27L54 47C49 61 44 74 40 88C42 76 43 65 44 54Z' fill='%234D7DFE'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--cobalt:#004aad;--cobalt-d:#003a87;--lime:#c1ff72;--bone:#F7F5F0;--ink:#0A1A2F;--grey:#8A8780;--line:#e6e2d8;--white:#fff;}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Poppins',sans-serif;color:var(--ink);background:var(--bone);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-.serif{font-family:'Poppins',sans-serif;font-weight:300;}
-.wrap{max-width:1140px;margin:0 auto;padding:0 32px;}
-section{padding:96px 0;}
-h2{font-size:42px;font-weight:700;letter-spacing:-1px;line-height:1.12;}
-p.lead{font-size:19px;color:var(--grey);max-width:600px;}
-.eyebrow{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--cobalt);font-weight:600;margin-bottom:16px;}
-.btn{display:inline-block;padding:16px 30px;border-radius:13px;font-weight:600;font-size:16px;text-decoration:none;cursor:pointer;border:0;}
-.b-cta{background:var(--lime);color:var(--ink);}
-.b-primary{background:var(--cobalt);color:#fff;}
-.b-ghost{background:transparent;color:var(--cobalt);border:2px solid var(--cobalt);}
-
-/* browser frame for screenshots */
-.bframe{border-radius:14px;overflow:hidden;box-shadow:0 34px 70px rgba(10,26,47,.16);border:1px solid var(--line);background:#fff;}
-.bframe .bar{height:36px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px;padding:0 15px;}
-.bframe .bar i{width:11px;height:11px;border-radius:50%;background:#ddd8cc;display:inline-block;}
-.bframe img{display:block;width:100%;}
-
-/* NAV */
-nav{position:sticky;top:0;z-index:50;background:rgba(247,245,240,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
-.nav-in{max-width:1140px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;}
-.logo{position:relative;display:inline-block;}
-.logo .rv{font-size:34px;font-weight:700;color:var(--cobalt);letter-spacing:-1.5px;line-height:1;}
-.logo .rv .d{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cobalt);margin-left:2px;}
-.nav-links a{color:var(--ink);text-decoration:none;font-size:15px;font-weight:500;margin-left:30px;}
-.nav-links a.cta{background:var(--cobalt);color:#fff;padding:11px 20px;border-radius:10px;}
-.mobile-cta,.burger,.mobile-menu{display:none;}
-.burger{background:none;border:0;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
-.burger span{display:block;width:24px;height:2.5px;background:var(--ink);border-radius:2px;}
-.mobile-cta{background:var(--cobalt);color:#fff;text-decoration:none;font-weight:600;}
-.mobile-menu a{display:block;padding:16px 24px;border-top:1px solid var(--line);color:var(--ink);font-weight:500;font-size:16px;text-decoration:none;}
-
-/* HERO */
-.hero{padding:90px 0 60px;text-align:center;}
-.hero h1{font-size:74px;font-weight:800;letter-spacing:-2.5px;line-height:1.02;}
-.hero h1 .ev{color:var(--cobalt);}
-.hero p{font-size:21px;color:var(--ink);max-width:680px;margin:26px auto 36px;}
-.hero .ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-.hero .note{font-size:14px;color:var(--grey);margin-top:20px;}
-.hero .shot{margin-top:56px;}
-.hero .shot img{width:100%;display:block;}
-
-/* generic feature (image + text) */
-.feature{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center;}
-.feature.rev .txt{order:2;}.feature.rev .media{order:1;}
-.feature .media img{width:100%;display:block;}
-.feature h2{margin-bottom:18px;}
-.flist{margin-top:22px;list-style:none;}
-.flist li{padding:9px 0 9px 30px;position:relative;font-size:16px;}
-.flist li:before{content:"";position:absolute;left:0;top:16px;width:12px;height:12px;border-radius:50%;background:var(--lime);}
-
-/* lifestyle band */
-.life{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px rgba(10,26,47,.16);}
-.life img{width:100%;display:block;}
-.life .cap{position:absolute;left:0;bottom:0;right:0;padding:46px;background:linear-gradient(transparent,rgba(10,26,47,.78));color:#fff;}
-.life .cap .q{font-family:'Poppins',sans-serif;font-size:30px;font-weight:300;max-width:620px;line-height:1.3;}
-
-/* COMPLIANCE COVERAGE STRIP */
-.cov{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:64px 0;text-align:center;}
-.cov h2{font-size:30px;}
-.covgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:1000px;margin:34px auto 0;}
-.covchip{background:var(--bone);border:1px solid var(--line);border-radius:12px;padding:12px 18px;text-align:left;display:flex;align-items:center;gap:11px;}
-.covchip .cdot{width:10px;height:10px;border-radius:50%;background:var(--lime);flex:none;}
-.covchip b{display:block;font-size:14px;font-weight:600;line-height:1.3;}
-.covchip small{display:block;font-size:11.5px;color:var(--grey);font-weight:400;margin-top:1px;}
-.covsrc{font-size:13.5px;color:#5c6672;max-width:740px;margin:30px auto 0;line-height:1.65;}
-.covsrc a{color:var(--cobalt);text-decoration:none;font-weight:500;}
-.covnote{font-size:12px;color:var(--grey);margin-top:12px;}
-
-/* PROBLEM */
-.problem{background:var(--ink);color:#fff;}
-.problem h2{color:#fff;}.problem .big{font-size:26px;font-weight:500;max-width:780px;margin-top:24px;line-height:1.5;}
-.problem .big b{color:var(--lime);font-weight:600;}
-
-/* STEPS */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:54px;}
-.step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px;}
-.step .n{width:42px;height:42px;border-radius:50%;background:var(--cobalt);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
-.step h3{font-size:20px;font-weight:600;margin-bottom:10px;}
-.step p{font-size:15px;color:var(--grey);}
-
-/* MOAT */
-.moat{background:var(--cobalt);color:#fff;}
-.moat h2{color:#fff;}
-.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:46px;}
-.mcard{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:28px;}
-.mcard h3{font-size:18px;font-weight:600;margin-bottom:8px;}.mcard h3 .tick{color:var(--lime);}
-.mcard p{font-size:14.5px;color:#cdd8e8;}
-.moat .ftnote{margin-top:30px;color:#cdd8e8;font-size:15px;}
-
-/* personas band */
-.personas{background:#fff;text-align:center;}
-.personas .shot{margin-top:46px;}
-.personas .shot img{width:100%;max-width:1000px;display:block;margin:0 auto;}
-
-/* mobile band */
-.mob{text-align:center;}
-.mob .shot img{width:100%;max-width:1040px;margin:36px auto 0;display:block;}
-
-/* FINAL */
-.final{background:var(--ink);color:#fff;text-align:center;}
-.final h2{color:#fff;font-size:46px;}
-.final p{color:#b9c2cf;font-size:19px;max-width:620px;margin:22px auto 16px;}
-.final .price{font-size:16px;color:var(--lime);font-weight:600;margin-bottom:34px;}
-.final .scarce{font-size:14px;color:var(--grey);margin-top:22px;}
-
-
-/* interest form */
-.interest{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px;}
-.interest input{font-family:'Poppins',sans-serif;font-size:15px;padding:15px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;min-width:190px;}
-.interest input::placeholder{color:#93a1b5;}
-.assure{font-size:13.5px;color:#93a1b5;margin-top:16px;}
-@media(max-width:860px){.interest{flex-direction:column;align-items:stretch;max-width:420px;margin:6px auto 0;}}
-
-
-/* lifecycle timeline */
-.tl{max-width:860px;margin:56px auto 0;position:relative;}
-.tl:before{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:3px;background:var(--line);border-radius:2px;}
-.tstep{position:relative;padding:0 0 38px 66px;}
-.tstep:last-child{padding-bottom:0;}
-.tstep .tdot{position:absolute;left:8px;top:4px;width:25px;height:25px;border-radius:50%;background:var(--lime);border:5px solid var(--bone);box-shadow:0 0 0 2px var(--line);}
-.tstep h3{font-size:20px;font-weight:700;margin-bottom:6px;}
-.tstep h3 small{font-weight:500;color:var(--grey);font-size:14px;margin-left:8px;}
-.tstep p{font-size:15.5px;color:#5c6672;max-width:640px;line-height:1.55;}
-.integ{margin-top:54px;text-align:center;font-size:15px;color:var(--grey);}
-.integ b{color:var(--ink);}
-/* compliance grid to 6 */
-.mgrid6{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
-.mcard .new{display:inline-block;background:var(--lime);color:var(--ink);font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;margin-left:8px;vertical-align:middle;}
-/* FAQ */
-.faq{max-width:760px;margin:50px auto 0;}
-.faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin-bottom:12px;}
-.faq summary{font-size:16.5px;font-weight:600;cursor:pointer;}
-.faq p{font-size:15px;color:#5c6672;margin-top:10px;line-height:1.55;}
-@media(max-width:860px){.mgrid6{grid-template-columns:1fr;}}
-
-/* FOOTER */
-footer{padding:40px 0;border-top:1px solid var(--line);}
-.foot-in{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--grey);}
-
-@media(max-width:860px){
-  .hero h1{font-size:44px;}
-  .hero{padding:52px 0 30px;}
-  .feature{grid-template-columns:1fr;gap:30px;}
-  .feature.rev .txt,.feature.rev .media{order:initial;}
-  .steps,.mgrid{grid-template-columns:1fr;}
-  h2{font-size:30px;}
-  section{padding:60px 0;}
-  .cov{padding:52px 0;}
-  .cov h2{font-size:26px;}
-  .covgrid{flex-direction:column;align-items:stretch;max-width:420px;}
-  /* nav: logo left, CTA centered, hamburger right */
-  .nav-in{display:flex;align-items:center;gap:10px;padding:14px 18px;}
-  .logo{flex:0 0 auto;}
-  .nav-links{display:none;}
-  .mobile-cta{display:inline-block;margin:0 auto;padding:10px 16px;border-radius:10px;font-size:13px;white-space:nowrap;}
-  .burger{display:flex;flex:0 0 auto;}
-  body.menu-open .mobile-menu{display:block;background:var(--bone);}
-  .logo .rv{font-size:27px;}
-  /* final + footer */
-  .final{padding:60px 0;}
-  .final h2{font-size:32px;}
-  .foot-in{flex-direction:column;align-items:flex-start;gap:14px;}
+/* ============ Thruley v3.0 — tokens & canonical recipes (from brand guidelines) ============ */
+:root{
+  --ink:#05070D; --slate:#0D1424; --slate2:#111A30;
+  --pulse:#4D7DFE; --pulse-deep:#1B2C6B; --ember:#FF6B3D;
+  --mist:#A9B3CA; --white:#F2F5FF; --paper:#F4F5F8; --paper-ink:#0B0F1A;
+  --glass:rgba(255,255,255,0.05); --glass-line:rgba(255,255,255,0.12);
+  --display:'Schibsted Grotesk',sans-serif; --body:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px; --s9:96px;
 }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--white);font-family:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--pulse);color:#fff}
+a{color:var(--pulse);text-decoration:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+section{padding:var(--s9) 0;border-top:1px solid rgba(255,255,255,0.07);position:relative}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--pulse);display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--pulse)}
+.eyebrow.ctr{justify-content:center}
+h1,h2,h3{font-family:var(--display);letter-spacing:-0.02em}
+h2{font-size:clamp(30px,4.5vw,46px);font-weight:700;line-height:1.06;margin-bottom:18px;letter-spacing:-0.03em}
+h3{font-size:20px;font-weight:600}
+p.lede{font-size:18px;color:var(--mist);max-width:660px}
+p.note{font-size:14px;color:var(--mist);max-width:680px}
+.mono{font-family:var(--mono)}
+.ctr{text-align:center}.mx{margin-left:auto;margin-right:auto}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--glass);border:1px solid var(--glass-line);border-radius:20px;padding:26px;backdrop-filter:blur(14px)}
+.card h4{font-family:var(--display);font-size:16px;font-weight:600;margin-bottom:8px}
+.card p{font-size:14px;color:var(--mist)}
+/* liquid glass tile — the canonical recipe */
+.lg{position:relative;background:linear-gradient(165deg,rgba(255,255,255,0.09),rgba(255,255,255,0.03) 45%,rgba(255,255,255,0.015));border:1px solid rgba(255,255,255,0.14);border-radius:22px;backdrop-filter:blur(18px) saturate(140%);box-shadow:0 24px 60px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.22),inset 0 -1px 0 rgba(255,255,255,0.04)}
+.lg::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(120% 60% at 50% -10%,rgba(255,255,255,0.12),transparent 55%);pointer-events:none}
+.lg.ember{border-color:rgba(255,107,61,.4)}
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(5,7,13,0.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.08)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:9px}
+.brand svg{width:19px;height:19px;display:block}
+.navmark{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-0.02em;color:var(--white)}
+.pd{display:inline-block;border-radius:50%;background:var(--pulse);box-shadow:0 0 10px var(--pulse)}
+nav .links{display:flex;gap:18px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;align-items:center}
+nav .links a{color:var(--mist)}nav .links a:hover{color:var(--white)}
+.btn{display:inline-block;font-family:var(--body);font-weight:600;font-size:13px;border-radius:100px;padding:11px 22px;cursor:pointer;border:0;transition:transform .15s ease,box-shadow .15s ease}
+.btn.pri{background:var(--pulse);color:#fff;box-shadow:0 0 24px rgba(77,125,254,.45)}
+.btn.pri:hover{transform:translateY(-1px);box-shadow:0 0 34px rgba(77,125,254,.6)}
+.btn.ghost{border:1px solid var(--glass-line);color:var(--white);background:transparent}
+.btn.ghost:hover{border-color:var(--pulse);color:var(--white)}
+.btn.lg-cta{font-size:15px;padding:15px 32px}
+.burger{display:none;background:none;border:0;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+.burger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px}
+.mobmenu{display:none}
+/* hero cover */
+.cover{padding:96px 0 92px;border-top:none;overflow:hidden}
+.cover .glow{position:absolute;inset:auto -20% -60% -20%;height:135%;background:radial-gradient(ellipse 55% 45% at 64% 92%,rgba(77,125,254,0.5),transparent 60%),radial-gradient(ellipse 40% 35% at 26% 104%,rgba(255,107,61,0.18),transparent 60%);filter:blur(30px);pointer-events:none;z-index:0}
+.cover .wrap{position:relative;z-index:1}
+.herogrid{display:grid;grid-template-columns:1.22fr 1fr;gap:44px;align-items:center}
+.herokicker{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--pulse);margin-bottom:20px}
+.heroh1{font-family:var(--display);font-weight:800;font-size:clamp(42px,6.6vw,76px);line-height:.97;letter-spacing:-0.045em}
+.heroh1 .pd{width:.12em;height:.12em;margin-left:.02em;vertical-align:baseline;box-shadow:0 0 22px var(--pulse),0 0 46px rgba(77,125,254,.6);animation:breathe 2.6s ease-in-out infinite}
+.herosub{color:var(--mist);font-size:17px;max-width:440px;margin-top:22px}
+.herosub b{color:var(--white);font-weight:600}
+.herocta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.herostrip{display:flex;flex-wrap:wrap;gap:18px;margin-top:36px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--mist);opacity:.85}
+.herostrip span{display:flex;align-items:center;gap:7px}
+.herostrip i{width:5px;height:5px;border-radius:50%;background:var(--pulse);display:inline-block}
+@keyframes breathe{0%,100%{opacity:.55;transform:scale(.85)}50%{opacity:1;transform:scale(1)}}
+/* receipt */
+.receipt{font-family:var(--mono);font-size:12.5px;line-height:2.1;color:var(--mist);position:relative;padding:22px 24px}
+.receipt .rhead{display:flex;justify-content:space-between;align-items:center;color:var(--white);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding-bottom:14px;margin-bottom:8px;border-bottom:1px dashed var(--glass-line)}
+.receipt .rhead .live{display:flex;align-items:center;gap:7px;color:var(--pulse)}
+.receipt .rhead .live .pd{width:6px;height:6px;animation:breathe 2.2s ease-in-out infinite}
+.receipt .rrow{display:flex;justify-content:space-between;gap:14px}
+.receipt .rrow .t{white-space:nowrap;opacity:.6}
+.receipt .ok::before{content:"✓ ";color:var(--pulse)}
+.receipt .warn{color:var(--ember)}.receipt .warn::before{content:"● ";color:var(--ember)}
+.receipt .rfoot{margin-top:8px;padding-top:12px;border-top:1px dashed var(--glass-line);color:var(--white);font-size:11.5px;letter-spacing:.04em}
+.receipt .rfoot b{color:var(--pulse);font-weight:500}.receipt .rfoot b.e{color:var(--ember)}
+/* coverage chips */
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.chip{background:var(--glass);border:1px solid var(--glass-line);border-radius:14px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;flex:1 1 300px;min-width:270px;backdrop-filter:blur(10px)}
+.chip .cdot{width:9px;height:9px;border-radius:50%;background:var(--pulse);flex:none;margin-top:6px;box-shadow:0 0 8px rgba(77,125,254,.6)}
+.chip b{font-family:var(--display);display:block;font-size:14px;font-weight:600;color:var(--white);line-height:1.35}
+.chip small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:var(--mist);margin-top:4px}
+.covsrc{font-size:13.5px;color:var(--mist);max-width:760px;margin:30px auto 0;line-height:1.65;text-align:center}
+.covnote{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--mist);opacity:.7;margin-top:14px;text-align:center}
+/* problem */
+.big{font-size:clamp(20px,2.4vw,25px);font-weight:400;max-width:820px;line-height:1.5;color:var(--white)}
+.big b{color:var(--ember);font-weight:600}
+/* steps */
+.step .n{width:38px;height:38px;border-radius:11px;background:rgba(77,125,254,.14);border:1px solid rgba(77,125,254,.4);color:var(--pulse);font-family:var(--mono);font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:15px}
+.step h4{font-family:var(--display);font-size:18px;font-weight:600;margin-bottom:9px;color:var(--white)}
+.step p{font-size:14.5px;color:var(--mist)}
+/* timeline */
+.tl{max-width:820px;margin:52px auto 0;position:relative}
+.tl:before{content:"";position:absolute;left:15px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--pulse),rgba(77,125,254,.15));border-radius:2px}
+.tstep{position:relative;padding:0 0 34px 54px}
+.tstep:last-child{padding-bottom:0}
+.tstep .td{position:absolute;left:8px;top:5px;width:17px;height:17px;border-radius:50%;background:var(--ink);border:2px solid var(--pulse);box-shadow:0 0 12px rgba(77,125,254,.6)}
+.tstep h4{font-family:var(--display);font-size:18px;font-weight:600;color:var(--white);margin-bottom:6px}
+.tstep h4 small{font-family:var(--mono);font-weight:400;color:var(--pulse);font-size:11px;letter-spacing:.1em;margin-left:10px;text-transform:uppercase}
+.tstep p{font-size:14.5px;color:var(--mist);max-width:660px}
+.integ{margin-top:46px;text-align:center;font-size:14.5px;color:var(--mist)}
+.integ b{color:var(--white);font-weight:600}
+/* product / status surface */
+.prodgrid{display:grid;grid-template-columns:300px 1fr;gap:44px;align-items:center}
+.prodgrid.rev{grid-template-columns:1fr 300px}
+.phone{width:300px;aspect-ratio:9/19.2;border-radius:40px;background:#04060C;border:1px solid rgba(255,255,255,.15);box-shadow:0 40px 90px rgba(0,0,0,.65),0 0 70px rgba(77,125,254,.16);padding:11px;margin:0 auto;position:relative}
+.phone .screen{height:100%;border-radius:30px;overflow:hidden;background:linear-gradient(180deg,#0A1226,#070B16);display:flex;flex-direction:column;position:relative;padding:0}
+.phone .glow{position:absolute;inset:auto -20% -30% -20%;height:60%;background:radial-gradient(ellipse 60% 60% at 50% 100%,rgba(77,125,254,.4),transparent 65%);filter:blur(20px);z-index:0}
+.notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:88px;height:22px;border-radius:12px;background:#04060C;z-index:5}
+.appbar{display:flex;justify-content:space-between;align-items:center;padding:38px 20px 0;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;color:var(--mist);position:relative;z-index:1}
+.appwrap{position:relative;z-index:1;padding:18px 16px;display:flex;flex-direction:column;gap:9px;overflow:hidden}
+.appgreet{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--mist);margin-bottom:2px}
+.appstat{font-family:var(--display);font-size:19px;font-weight:700;color:var(--white);line-height:1.1;margin-bottom:8px}
+.appstat b{color:var(--pulse)}
+.tile{border-radius:14px;padding:12px 14px;font-size:11px;line-height:1.4}
+.tile.g{background:rgba(255,255,255,.055);border:1px solid var(--glass-line)}
+.tile.e{background:rgba(255,107,61,.1);border:1px solid rgba(255,107,61,.4)}
+.tile .tl2{display:flex;justify-content:space-between;align-items:center}
+.tile .lab{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist)}
+.tile .val{font-family:var(--display);font-size:14px;font-weight:600;color:var(--white);margin-top:3px}
+.tile.e .lab{color:var(--ember)}
+.tile .act{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;color:var(--pulse);border:1px solid rgba(77,125,254,.5);border-radius:20px;padding:4px 9px}
+.tile.e .act{color:var(--ember);border-color:rgba(255,107,61,.5)}
+.prodlist{list-style:none;margin-top:24px}
+.prodlist li{padding:11px 0 11px 28px;position:relative;font-size:15px;color:var(--mist);border-bottom:1px solid rgba(255,255,255,.06)}
+.prodlist li:last-child{border-bottom:0}
+.prodlist li:before{content:"";position:absolute;left:0;top:19px;width:9px;height:9px;border-radius:50%;background:var(--pulse);box-shadow:0 0 8px rgba(77,125,254,.6)}
+.prodlist li b{color:var(--white);font-weight:600}
+/* personas */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.pcard{padding:20px}
+.pcard .av{width:38px;height:38px;border-radius:12px;background:linear-gradient(150deg,rgba(77,125,254,.5),rgba(77,125,254,.1));border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:16px;color:var(--white);margin-bottom:12px}
+.pcard h4{font-family:var(--display);font-size:15px;font-weight:600;color:var(--white)}
+.pcard small{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--mist);display:block;margin-top:3px}
+/* moat cards */
+.mcard h4{display:flex;align-items:center;gap:9px;font-family:var(--display);font-size:16px;font-weight:600;color:var(--white);margin-bottom:9px}
+.mcard h4 .tk{color:var(--pulse)}
+.mcard.ember h4 .tk{color:var(--ember)}
+.mcard .tag{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,107,61,.16);color:var(--ember);border:1px solid rgba(255,107,61,.4);padding:2px 8px;border-radius:20px}
+/* faq */
+.faq{max-width:780px;margin:44px auto 0}
+.faq details{background:var(--glass);border:1px solid var(--glass-line);border-radius:14px;padding:18px 22px;margin-bottom:11px;backdrop-filter:blur(10px)}
+.faq summary{font-family:var(--display);font-size:16px;font-weight:600;cursor:pointer;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--pulse);font-size:20px;font-weight:400}
+.faq details[open] summary::after{content:"–"}
+.faq p{font-size:14.5px;color:var(--mist);margin-top:12px;line-height:1.6}
+/* final */
+.final{overflow:hidden}
+.final .glow{position:absolute;inset:auto -20% -70% -20%;height:130%;background:radial-gradient(ellipse 50% 45% at 50% 100%,rgba(77,125,254,0.4),transparent 62%);filter:blur(34px);pointer-events:none;z-index:0}
+.final .wrap{position:relative;z-index:1;text-align:center}
+.final h2{font-size:clamp(34px,5vw,52px)}
+.price{font-family:var(--mono);font-size:14px;letter-spacing:.03em;color:var(--pulse);margin:22px auto 30px;max-width:600px}
+.interest{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+.interest input{font-family:var(--body);font-size:15px;padding:14px 18px;border-radius:12px;border:1px solid var(--glass-line);background:rgba(255,255,255,.05);color:var(--white);min-width:200px}
+.interest input::placeholder{color:var(--mist)}
+.interest input:focus{outline:none;border-color:var(--pulse);box-shadow:0 0 0 3px rgba(77,125,254,.2)}
+.assure{font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--mist);margin-top:18px;opacity:.8}
+.scarce{font-size:14px;color:var(--mist);margin-top:16px}
+/* footer */
+footer{padding:44px 0;border-top:1px solid rgba(255,255,255,.08)}
+.foot-in{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--mist)}
+.foot-in .fr{text-align:right;line-height:1.7}
+.foot-in .fr .fine{font-size:11.5px;opacity:.7;font-family:var(--mono);letter-spacing:.02em}
+@media(max-width:900px){
+  nav .links{display:none}
+  .burger{display:flex}
+  body.menu-open .mobmenu{display:block;background:rgba(5,7,13,.97);border-bottom:1px solid var(--glass-line)}
+  .mobmenu a{display:block;padding:15px 28px;color:var(--white);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;border-top:1px solid rgba(255,255,255,.06)}
+  .herogrid,.prodgrid,.prodgrid.rev{grid-template-columns:1fr;gap:34px}
+  .prodgrid .phone{order:2}
+  .grid2,.grid3,.pgrid{grid-template-columns:1fr}
+  .pgrid{grid-template-columns:1fr 1fr}
+  section{padding:var(--s8) 0}
+  .foot-in .fr{text-align:left}
+}
+@media(max-width:560px){.pgrid{grid-template-columns:1fr}.chip{min-width:100%}}
 </style></head><body>
 
 <nav>
-  <div class="nav-in">
-    <div class="logo"><span class="rv">thruley<span class="d"></span></span></div>
-    <div class="nav-links">
-      <a href="#how">How it works</a><a href="#dash">The product</a><a href="#principals">For agencies</a>
-      <a href="#apply" class="cta">Register interest</a>
+  <div class="wrap">
+    <a href="#" class="brand" aria-label="thruley home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M14 42C36 36 62 31 88 27L54 47C49 61 44 74 40 88C42 76 43 65 44 54Z" fill="#F2F5FF"/></svg>
+      <span class="navmark">thruley</span>
+    </a>
+    <div class="links">
+      <a href="#how">Product</a><a href="#coverage">Compliance</a><a href="#apply">Pricing</a><a href="#principals">Agencies</a>
+      <a href="#apply" class="btn pri" style="padding:9px 18px">Get early access</a>
     </div>
-    <a href="#apply" class="mobile-cta">Register</a>
-    <button class="burger" onclick="document.body.classList.toggle('menu-open')" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <button class="burger" onclick="document.body.classList.toggle('menu-open')" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
-  <div class="mobile-menu">
-    <a href="#how" onclick="document.body.classList.remove('menu-open')">How it works</a>
-    <a href="#dash" onclick="document.body.classList.remove('menu-open')">The product</a>
-    <a href="#principals" onclick="document.body.classList.remove('menu-open')">For agencies</a>
+  <div class="mobmenu">
+    <a href="#how" onclick="document.body.classList.remove('menu-open')">Product</a>
+    <a href="#coverage" onclick="document.body.classList.remove('menu-open')">Compliance</a>
+    <a href="#principals" onclick="document.body.classList.remove('menu-open')">Agencies</a>
+    <a href="#apply" onclick="document.body.classList.remove('menu-open')">Get early access</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<header class="hero"><div class="wrap">
-  <div class="eyebrow">For solo agents, teams and agencies</div>
-  <h1><span class="ev">Every</span> process.<br><span class="ev">Every</span> deal. <span class="ev">Every</span> time.</h1>
-  <p>Your AI sales assistant handles everything after the lead: bookings, follow-ups, vendor updates, compliance. Nothing falls through the cracks, and your clients think you're the most organised agent they've ever met.</p>
-  <div class="ctas">
-    <a class="btn b-cta" href="#apply">Register your interest</a>
-    <a class="btn b-ghost" href="#how">See how it works</a>
+<!-- HERO — the receipt does the persuading -->
+<header class="cover">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="herogrid">
+      <div>
+        <div class="herokicker">The AI back office for real estate</div>
+        <h1 class="heroh1">Kill the<br>dead admin<span class="pd"></span></h1>
+        <p class="herosub">Thruley reads your email, CRM and meeting notes, then handles the bookings, the signage, the follow-ups and every form the Property Acts ask for. <b>You keep the human work.</b></p>
+        <div class="herocta">
+          <a href="#apply" class="btn pri lg-cta">Get early access</a>
+          <a href="#how" class="btn ghost lg-cta">See how it works</a>
+        </div>
+        <div class="herostrip">
+          <span><i></i>FORM 6</span><span><i></i>FORM 2</span><span><i></i>AML / CTF</span><span><i></i>TRUST</span><span><i></i>COOLING-OFF</span>
+        </div>
+      </div>
+      <div class="lg receipt">
+        <div class="rhead"><span>thruley · live</span><span class="live"><span class="pd"></span>09:47</span></div>
+        <div class="rrow"><span class="ok">Form 6 fields checked</span><span class="t">02:11</span></div>
+        <div class="rrow"><span class="ok">Photographer booked</span><span class="t">06:30</span></div>
+        <div class="rrow"><span class="ok">Vendor update sent</span><span class="t">07:02</span></div>
+        <div class="rrow"><span class="ok">AML check · vendor</span><span class="t">07:15</span></div>
+        <div class="rrow"><span class="ok">Trust deposit receipted</span><span class="t">08:40</span></div>
+        <div class="rrow"><span class="warn">Price change · needs you</span><span class="t">now</span></div>
+        <div class="rfoot"><b>6 handled overnight</b> · <b class="e">1 for you</b></div>
+      </div>
+    </div>
   </div>
-  <div class="note">Works with your CRM. Sends from your address. Your clients never see a dashboard.</div>
-  <div class="shot"><img src="assets/hero.png" alt="Thruley on desktop and mobile"></div>
-</div></header>
+</header>
 
 <!-- COMPLIANCE COVERAGE -->
-<section id="coverage" class="cov"><div class="wrap">
-  <div class="eyebrow">Compliance coverage</div>
-  <h2>Every check, mapped to the rule that requires it.</h2>
-  <div class="covgrid">
-    <div class="covchip"><span class="cdot"></span><span><b>AML/CTF customer due diligence</b><small>AUSTRAC &middot; AML/CTF Act &middot; live from 1 Jul 2026</small></span></div>
-    <div class="covchip"><span class="cdot"></span><span><b>Form 6 appointments</b><small>Property Occupations Act 2014</small></span></div>
-    <div class="covchip"><span class="cdot"></span><span><b>Form 2 seller disclosure</b><small>Property Law Act 2023 &middot; since 1 Aug 2025</small></span></div>
-    <div class="covchip"><span class="cdot"></span><span><b>Forms 7 &amp; 8 disclosures</b><small>Property Occupations Act 2014</small></span></div>
-    <div class="covchip"><span class="cdot"></span><span><b>Trust accounting</b><small>Agents Financial Administration Act 2014</small></span></div>
-    <div class="covchip"><span class="cdot"></span><span><b>Cooling-off &amp; bidder registration</b><small>Property Occupations Act &amp; Regulation</small></span></div>
-    <div class="covchip"><span class="cdot"></span><span><b>Pool, smoke alarm &amp; safety switch</b><small>QBCC &middot; QFES &middot; Electrical Safety Regulation</small></span></div>
-    <div class="covchip"><span class="cdot"></span><span><b>CPD deadlines</b><small>Office of Fair Trading &middot; mandatory since Jun 2025</small></span></div>
+<section id="coverage">
+  <div class="wrap">
+    <div class="eyebrow ctr">Compliance coverage</div>
+    <h2 class="ctr">Every check, mapped to the rule that requires it.</h2>
+    <div class="chips" style="margin-top:34px">
+      <div class="chip"><span class="cdot"></span><span><b>AML/CTF customer due diligence</b><small>AUSTRAC · AML/CTF Act · live 1 Jul 2026</small></span></div>
+      <div class="chip"><span class="cdot"></span><span><b>Form 6 appointments</b><small>Property Occupations Act 2014</small></span></div>
+      <div class="chip"><span class="cdot"></span><span><b>Form 2 seller disclosure</b><small>Property Law Act 2023 · since 1 Aug 2025</small></span></div>
+      <div class="chip"><span class="cdot"></span><span><b>Forms 7 &amp; 8 disclosures</b><small>Property Occupations Act 2014</small></span></div>
+      <div class="chip"><span class="cdot"></span><span><b>Trust accounting</b><small>Agents Financial Administration Act 2014</small></span></div>
+      <div class="chip"><span class="cdot"></span><span><b>Cooling-off &amp; bidder registration</b><small>Property Occupations Act &amp; Regulation</small></span></div>
+      <div class="chip"><span class="cdot"></span><span><b>Pool, smoke alarm &amp; safety switch</b><small>QBCC · QFES · Electrical Safety Reg</small></span></div>
+      <div class="chip"><span class="cdot"></span><span><b>CPD deadlines</b><small>Office of Fair Trading · mandatory since Jun 2025</small></span></div>
+    </div>
+    <p class="covsrc">Mapped to the current published requirements of <a href="https://www.austrac.gov.au/business/industry-specific-guidance/real-estate" target="_blank" rel="noopener">AUSTRAC</a> (tranche&nbsp;2 obligations, 2026), the <a href="https://www.qld.gov.au/law/laws-regulated-industries-and-accountability/queensland-laws-and-regulations/regulated-industries-and-licensing/regulated-industries-licensing-and-legislation/property-industry-regulation" target="_blank" rel="noopener">Queensland Office of Fair Trading</a> and <a href="https://www.legislation.qld.gov.au" target="_blank" rel="noopener">Queensland legislation</a>, and updated when the rules change.</p>
+    <p class="covnote">Regulators are named for reference only. They don't endorse or certify Thruley — no regulator certifies software. Not legal advice.</p>
   </div>
-  <p class="covsrc">Mapped to the current published requirements of <a href="https://www.austrac.gov.au/business/industry-specific-guidance/real-estate" target="_blank" rel="noopener">AUSTRAC</a> (tranche&nbsp;2 obligations, 2026), the <a href="https://www.qld.gov.au/law/laws-regulated-industries-and-accountability/queensland-laws-and-regulations/regulated-industries-and-licensing/regulated-industries-licensing-and-legislation/property-industry-regulation" target="_blank" rel="noopener">Queensland Office of Fair Trading</a> and <a href="https://www.legislation.qld.gov.au" target="_blank" rel="noopener">Queensland legislation</a> &mdash; and updated when the rules change.</p>
-  <p class="covnote">Regulators are named for reference only. They don't endorse or certify Thruley &mdash; no regulator certifies software. Not legal advice.</p>
-</div></section>
+</section>
 
 <!-- PROBLEM -->
-<section class="problem"><div class="wrap">
-  <div class="eyebrow" style="color:var(--lime)">The problem</div>
-  <h2>One missed step can cost you the commission, not just the deal.</h2>
-  <p class="big">Queensland real estate runs on strict, shifting compliance: Form 6 appointments, Form 2 disclosures, trust accounting, cooling-off, CPD. Under the <b>Property Occupations Act</b>, a single defective Form 6 means no valid appointment and <b>no entitlement to commission</b> on the sale. The rules keep changing, and most agents track every step manually, from memory, at 10pm.</p>
-</div></section>
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The problem</div>
+    <h2>One missed step can cost the commission,<br>not just the deal.</h2>
+    <p class="big" style="margin-top:24px">Queensland real estate runs on strict, shifting compliance: Form 6 appointments, Form 2 disclosures, trust accounting, cooling-off, CPD. Under the Property Occupations Act, a single defective Form 6 means no valid appointment and <b>no entitlement to commission</b> on the sale. The rules keep changing, and most agents still track every step by hand, from memory, at 10pm.</p>
+  </div>
+</section>
 
 <!-- HOW -->
-<section id="how"><div class="wrap">
-  <div class="eyebrow">How it works</div>
-  <h2>You win the listing. Thruley runs the rest.</h2>
-  <p class="lead">The moment a Form 6 is signed, Thruley books your media, reminds your solicitor, drafts your listing copy, sends your vendor their kickoff, and tracks every compliance step, in your voice, under your name.</p>
-  <div class="steps">
-    <div class="step"><div class="n">1</div><h3>Pick your assistant</h3><p>Choose a personality that matches how you sell, then name them anything. Your clients only ever see "Jessica from your agency."</p></div>
-    <div class="step"><div class="n">2</div><h3>Set your process once</h3><p>Your way of doing things, locked in. Thruley follows it on every deal, for every agent, automatically.</p></div>
-    <div class="step"><div class="n">3</div><h3>Sell. Thruley does the rest</h3><p>It works in your inbox, your phone, your CRM. You approve what matters. Nothing slips.</p></div>
+<section id="how">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2>You win the listing. Thruley runs the rest.</h2>
+    <p class="lede">The moment a Form 6 is signed, Thruley books your media, reminds your solicitor, drafts your listing copy, sends the vendor their kickoff and tracks every compliance step, in your voice, under your name.</p>
+    <div class="grid3" style="margin-top:50px">
+      <div class="card step"><div class="n">1</div><h4>Pick your assistant</h4><p>Choose a personality that matches how you sell, then name them anything. Your clients only ever see "Jessica from your agency".</p></div>
+      <div class="card step"><div class="n">2</div><h4>Set your process once</h4><p>Your way of doing things, locked in. Thruley follows it on every deal, for every agent, automatically.</p></div>
+      <div class="card step"><div class="n">3</div><h4>Sell. Thruley does the rest</h4><p>It works in your inbox, your phone, your CRM. You approve what matters. Nothing slips.</p></div>
+    </div>
   </div>
-</div></section>
+</section>
 
 <!-- LIFECYCLE -->
-<section id="timeline" style="background:#fff"><div class="wrap">
-  <div class="eyebrow" style="text-align:center">Under the hood</div>
-  <h2 style="text-align:center">From listing to settlement. Here's what actually happens.</h2>
-  <div class="tl">
-    <div class="tstep"><span class="tdot"></span><h3>You win the listing <small>day 0</small></h3>
-      <p>Thruley builds your Form 6 and checks every required field before it goes out, watches the 90-day term, orders the Form 2 seller disclosure pack (title search, plan, certificates take 3 to 7 business days, so they're ready before any buyer signs), and starts the vendor identity check your new AML obligations require.</p></div>
-    <div class="tstep"><span class="tdot"></span><h3>Campaign prep <small>week 1</small></h3>
-      <p>Photographer and floor plan booked from your calendar. Listing copy drafted in your voice for realestate.com.au and Domain. Vendor kickoff email ready for your approval. Every ad checked against price-representation rules before it runs.</p></div>
-    <div class="tstep"><span class="tdot"></span><h3>Live on market</h3>
-      <p>Enquiry follow-ups drafted, open homes scheduled, and the vendor report goes out every Friday in your voice. Nothing waits for you to remember it.</p></div>
-    <div class="tstep"><span class="tdot"></span><h3>Offer accepted</h3>
-      <p>Buyer identity check runs (AML), the Form 2 disclosure and Form 8 buyer disclosure are attached before signing, the deposit is receipted into trust and banked by the next business day, and cooling-off timers start counting.</p></div>
-    <div class="tstep"><span class="tdot"></span><h3>Under contract</h3>
-      <p>Finance and building-and-pest deadlines tracked with nudges to the buyer's solicitor. Trust ledger stays reconciled. You see exactly where the deal stands.</p></div>
-    <div class="tstep"><span class="tdot"></span><h3>Settlement</h3>
-      <p>Final checklist closed out, review request sent, and the whole file, every step logged and timestamped, archived for the 7-year record-keeping you're required to hold.</p></div>
-  </div>
-  <div class="integ">Lives in the tools you already use: <b>Gmail and Outlook, your calendar, SMS</b>, and works alongside your CRM (<b>AgentBox, VaultRE, Rex</b> and others). Your CRM stays the source of truth.</div>
-</div></section>
-
-<!-- DASHBOARD FEATURE -->
-<section id="dash" style="background:#fff"><div class="wrap">
-  <div class="feature">
-    <div class="txt">
-      <div class="eyebrow">The product</div>
-      <h2>Your whole day, handled.</h2>
-      <p class="lead">One calm dashboard. See what Thruley did, approve what needs you, and watch every listing move. Nothing buried, nothing missed.</p>
-      <ul class="flist">
-        <li>Everything drafted and waiting for one-tap approval</li>
-        <li>Live workflow tracking from Form 6 to settlement</li>
-        <li>Hours saved on every listing, counted</li>
-        <li>Every step auto-checked against the latest compliance and logged</li>
-      </ul>
+<section id="timeline">
+  <div class="wrap">
+    <div class="eyebrow ctr">Under the hood</div>
+    <h2 class="ctr">From listing to settlement. Here's what actually happens.</h2>
+    <div class="tl">
+      <div class="tstep"><span class="td"></span><h4>You win the listing <small>day 0</small></h4>
+        <p>Thruley builds your Form 6 and checks every required field before it goes out, watches the 90-day term, orders the Form 2 seller disclosure pack (title search, plan and certificates take 3 to 7 business days, so they're ready before any buyer signs) and starts the vendor identity check your AML obligations now require.</p></div>
+      <div class="tstep"><span class="td"></span><h4>Campaign prep <small>week 1</small></h4>
+        <p>Photographer and floor plan booked from your calendar. Listing copy drafted in your voice for realestate.com.au and Domain. Vendor kickoff ready for your approval. Every ad checked against price-representation rules before it runs.</p></div>
+      <div class="tstep"><span class="td"></span><h4>Live on market</h4>
+        <p>Enquiry follow-ups drafted, open homes scheduled, and the vendor report goes out every Friday in your voice. Nothing waits for you to remember it.</p></div>
+      <div class="tstep"><span class="td"></span><h4>Offer accepted</h4>
+        <p>Buyer identity check runs (AML), the Form 2 disclosure and Form 8 buyer disclosure are attached before signing, the deposit is receipted into trust and banked by the next business day, and cooling-off timers start counting.</p></div>
+      <div class="tstep"><span class="td"></span><h4>Under contract</h4>
+        <p>Finance and building-and-pest deadlines tracked with nudges to the buyer's solicitor. Trust ledger stays reconciled. You see exactly where the deal stands.</p></div>
+      <div class="tstep"><span class="td"></span><h4>Settlement</h4>
+        <p>Final checklist closed out, review request sent, and the whole file, every step logged and timestamped, archived for the 7-year record-keeping you're required to hold.</p></div>
     </div>
-    <div class="media"><div class="bframe"><div class="bar"><i></i><i></i><i></i></div><img loading="lazy" src="assets/dashboard.png" alt="Thruley dashboard"></div></div>
+    <div class="integ">Lives in the tools you already use: <b>Gmail and Outlook, your calendar, SMS</b>, and works alongside your CRM (<b>AgentBox, VaultRE, Rex</b> and others). Your CRM stays the source of truth.</div>
   </div>
-</div></section>
+</section>
+
+<!-- PRODUCT — the screen you check, not the screen you work in -->
+<section id="dash">
+  <div class="wrap">
+    <div class="prodgrid">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="glow"></div>
+          <div class="appbar"><span>9:41</span><span>thruley</span><span>▪▪▪ ▪</span></div>
+          <div class="appwrap">
+            <div class="appgreet">Wednesday · handled overnight</div>
+            <div class="appstat"><b>6 done.</b><br>1 needs you.</div>
+            <div class="tile g"><div class="tl2"><div><div class="lab">Vendor update · 14 Rose St</div><div class="val">Sent 7:02am</div></div><span class="act">View</span></div></div>
+            <div class="tile g"><div class="tl2"><div><div class="lab">AML · vendor verified</div><div class="val">Cleared</div></div><span class="act">Log</span></div></div>
+            <div class="tile g"><div class="tl2"><div><div class="lab">Form 2 pack · 8 Bay Tce</div><div class="val">Ordered</div></div><span class="act">Track</span></div></div>
+            <div class="tile e"><div class="tl2"><div><div class="lab">Needs you · price change</div><div class="val">Approve to send</div></div><span class="act">Approve</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow">The product</div>
+        <h2>The screen you check,<br>not the screen you work in.</h2>
+        <p class="lede">Thruley's app opens on proof of work, not a to-do list: what was handled overnight, what's live, and the one or two things that genuinely need you. No dashboard to live in.</p>
+        <ul class="prodlist">
+          <li>Everything drafted and waiting for <b>one-tap approval</b></li>
+          <li>Live workflow tracking from <b>Form 6 to settlement</b></li>
+          <li>Every step auto-checked against the latest compliance and <b>logged</b></li>
+          <li>Sends from <b>your address, in your voice</b>. Clients never see a bot.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PERSONAS -->
-<section class="personas"><div class="wrap">
-  <div class="eyebrow">Meet your assistant</div>
-  <h2>Nine personalities. Pick the one that fits how you work.</h2>
-  <p class="lead" style="margin:0 auto">Choose a personality, rename them to suit your brand, and they're yours.</p>
-  <div class="shot"><div class="bframe" style="max-width:1000px;margin:46px auto 0"><div class="bar"><i></i><i></i><i></i></div><img loading="lazy" src="assets/personas.png" alt="Thruley persona picker"></div></div>
-</div></section>
-
-<!-- MOAT -->
-<section class="moat"><div class="wrap">
-  <div class="eyebrow" style="color:var(--lime)">Built for Queensland</div>
-  <h2>It knows the compliance. Because it's built here.</h2>
-  <p class="lead" style="text-align:center;max-width:780px;margin:0 auto 30px">Every step is checked against the latest requirements before it moves. When the rules change, Thruley updates itself, so you're never working off an outdated form.</p>
-  <div class="mgrid mgrid6">
-    <div class="mcard"><h3><span class="tick">✓</span> Form 6</h3><p>Checked for every required field before it goes out. The 90-day sole-agency term and reappointment window tracked automatically.</p></div>
-    <div class="mcard"><h3><span class="tick">✓</span> Form 2 disclosure</h3><p>Certificate pack ordered at listing so disclosure is ready before any buyer signs. Miss it and the buyer can walk up to settlement.</p></div>
-    <div class="mcard"><h3><span class="tick">✓</span> AML checks<span class="new">NEW from 1 July</span></h3><p>Agents are now AUSTRAC reporting entities. Vendor and buyer identity checks built into the workflow, records kept 7 years.</p></div>
-    <div class="mcard"><h3><span class="tick">✓</span> Trust accounting</h3><p>Deposits receipted immediately and banked by the next business day. Ledger reconciled, audit-ready.</p></div>
-    <div class="mcard"><h3><span class="tick">✓</span> Forms 7 &amp; 8</h3><p>Beneficial-interest disclosure to the seller and buyer disclosure handled at the right moment, not remembered at the last one.</p></div>
-    <div class="mcard"><h3><span class="tick">✓</span> The rest</h3><p>Pool safety certificates, smoke alarm compliance, safety-switch declarations, cooling-off timers, auction bidder registration, CPD deadlines.</p></div>
-  </div>
-  <p class="ftnote">Automatic compliance checks on every step, always current with the latest rules. Nothing sends without your say-so.<br><span style="font-size:12.5px;opacity:.75">Thruley automates workflow and checking. It is not legal advice, and it never replaces your judgement or your solicitor.</span></p>
-</div></section>
-
-<!-- PRINCIPALS -->
-<section id="principals" style="background:#fff"><div class="wrap">
-  <div class="feature rev">
-    <div class="media"><img loading="lazy" src="assets/principal.png" alt="An agency principal using Thruley" style="border-radius:18px;box-shadow:0 30px 60px rgba(10,26,47,.16)"></div>
-    <div class="txt">
-      <div class="eyebrow">For principals</div>
-      <h2>Your agents have their own style. Your agency should have one standard.</h2>
-      <p class="lead">Set your agency's process once. Thruley runs it across every agent, every listing, and you see exactly where every deal stands.</p>
-      <ul class="flist">
-        <li>Your playbook, enforced on every agent</li>
-        <li>One oversight dashboard, real-time</li>
-        <li>New agents run your standard from day one</li>
-      </ul>
-      <a class="btn b-primary" style="margin-top:24px" href="#apply">Talk to us about your agency</a>
+<section>
+  <div class="wrap">
+    <div class="eyebrow ctr">Meet your assistant</div>
+    <h2 class="ctr">Nine personalities. Pick the one that fits how you work.</h2>
+    <p class="lede ctr mx">Choose a personality, rename them to suit your brand, and they're yours. Your clients only ever see the name you choose.</p>
+    <div class="pgrid">
+      <div class="lg pcard"><div class="av">D</div><h4>Donna</h4><small>Warm · relationship-led</small></div>
+      <div class="lg pcard"><div class="av">M</div><h4>Marcus</h4><small>Direct · high-volume</small></div>
+      <div class="lg pcard"><div class="av">P</div><h4>Priya</h4><small>Precise · compliance-first</small></div>
+      <div class="lg pcard"><div class="av">J</div><h4>Jack</h4><small>Casual · fast follow-up</small></div>
+      <div class="lg pcard"><div class="av">S</div><h4>Sofia</h4><small>Polished · prestige</small></div>
+      <div class="lg pcard"><div class="av">+</div><h4>Four more</h4><small>Nine in total, all yours to rename</small></div>
     </div>
   </div>
-  <div class="bframe" style="margin-top:56px"><div class="bar"><i></i><i></i><i></i></div><img loading="lazy" src="assets/oversight.png" alt="Agency oversight dashboard"></div>
-</div></section>
+</section>
 
-<!-- MOBILE -->
-<section class="mob"><div class="wrap">
-  <div class="eyebrow">Wherever you are</div>
-  <h2>Your assistant, in your pocket.</h2>
-  <div class="shot"><img loading="lazy" src="assets/phones.png" alt="Thruley on mobile"></div>
-</div></section>
+<!-- MOAT -->
+<section id="moat">
+  <div class="wrap">
+    <div class="eyebrow ctr">Built for Queensland</div>
+    <h2 class="ctr">It knows the compliance. Because it's built here.</h2>
+    <p class="lede ctr mx">Every step is checked against the latest requirements before it moves. When the rules change, Thruley updates itself, so you're never working off an outdated form.</p>
+    <div class="grid3" style="margin-top:46px">
+      <div class="card mcard"><h4><span class="tk">✓</span> Form 6</h4><p>Checked for every required field before it goes out. The 90-day sole-agency term and reappointment window tracked automatically.</p></div>
+      <div class="card mcard"><h4><span class="tk">✓</span> Form 2 disclosure</h4><p>Certificate pack ordered at listing so disclosure is ready before any buyer signs. Miss it and the buyer can walk up to settlement.</p></div>
+      <div class="lg mcard ember"><h4><span class="tk">✓</span> AML checks <span class="tag">New · 1 Jul</span></h4><p>Agents are now AUSTRAC reporting entities. Vendor and buyer identity checks built into the workflow, records kept 7 years.</p></div>
+      <div class="card mcard"><h4><span class="tk">✓</span> Trust accounting</h4><p>Deposits receipted immediately and banked by the next business day. Ledger reconciled, audit-ready.</p></div>
+      <div class="card mcard"><h4><span class="tk">✓</span> Forms 7 &amp; 8</h4><p>Beneficial-interest disclosure to the seller and buyer disclosure handled at the right moment, not remembered at the last one.</p></div>
+      <div class="card mcard"><h4><span class="tk">✓</span> The rest</h4><p>Pool safety certificates, smoke alarm compliance, safety-switch declarations, cooling-off timers, auction bidder registration, CPD deadlines.</p></div>
+    </div>
+    <p class="note ctr mx" style="margin-top:30px">Automatic compliance checks on every step, always current with the latest rules. Nothing sends without your say-so. Thruley automates workflow and checking. It is not legal advice, and it never replaces your judgement or your solicitor.</p>
+  </div>
+</section>
 
+<!-- PRINCIPALS -->
+<section id="principals">
+  <div class="wrap">
+    <div class="prodgrid rev">
+      <div>
+        <div class="eyebrow">For principals</div>
+        <h2>Your agents have their own style. Your agency should have one standard.</h2>
+        <p class="lede">Set your agency's process once. Thruley runs it across every agent, every listing, and you see exactly where every deal stands.</p>
+        <ul class="prodlist">
+          <li>Your playbook, <b>enforced on every agent</b></li>
+          <li>One <b>oversight dashboard</b>, real-time</li>
+          <li>New agents run your <b>standard from day one</b></li>
+        </ul>
+        <a href="#apply" class="btn pri lg-cta" style="margin-top:28px">Talk to us about your agency</a>
+      </div>
+      <div class="lg" style="padding:20px;align-self:stretch;display:flex;flex-direction:column;gap:10px;justify-content:center">
+        <div class="appgreet" style="margin-bottom:4px">Agency · live pipeline</div>
+        <div class="tile g"><div class="tl2"><div><div class="lab">Agent · Sarah</div><div class="val">7 deals on track</div></div><span class="act">100%</span></div></div>
+        <div class="tile g"><div class="tl2"><div><div class="lab">Agent · Tom</div><div class="val">4 deals on track</div></div><span class="act">100%</span></div></div>
+        <div class="tile e"><div class="tl2"><div><div class="lab">Agent · Dan · Form 6 due</div><div class="val">1 needs review</div></div><span class="act">Open</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- FAQ -->
-<section id="faq"><div class="wrap">
-  <div class="eyebrow" style="text-align:center">Questions agents ask</div>
-  <h2 style="text-align:center">The honest answers.</h2>
-  <div class="faq">
-    <details><summary>Does it replace my CRM?</summary><p>No. Your CRM stays the source of truth. Thruley does the work around it: the follow-ups, the drafts, the bookings, the checks. It's designed to work alongside AgentBox, VaultRE, Rex and others.</p></details>
-    <details><summary>Can it send something without me knowing?</summary><p>No. Everything Thruley drafts sits in your approval queue. Anything compliance-touching or client-facing needs your explicit sign-off before it moves. That rule is structural, not a setting.</p></details>
-    <details><summary>Will my clients know I'm using it?</summary><p>Your clients only ever see you. Messages go from your address, in your voice, under the assistant name you choose. There's no Thruley branding on anything a vendor or buyer sees.</p></details>
-    <details><summary>What does it cost?</summary><p>The founding-partner pilot is free. You help us shape the product around your process, and you lock in founding pricing for life when we launch. A full-time PA costs $70&ndash;90k a year; Thruley will always be a fraction of that.</p></details>
-    <details><summary>I'm a solo agent. Is this for me?</summary><p>Especially for you. Solo agents carry the full admin load alone. Agencies get the oversight layer on top; solo agents get their evenings back.</p></details>
-    <details><summary>Is Thruley endorsed by AUSTRAC or the OFT?</summary><p>No &mdash; and be wary of anything that claims to be, because regulators don't endorse or certify software. What we do instead: every check is mapped to the specific rule that requires it, with the source named, and updated when the rules change. That's the coverage list further up this page.</p></details>
-    <details><summary>Is this legal advice?</summary><p>No. Thruley automates workflows and runs checks against current requirements, and it's built to keep you inside the lines. It doesn't replace your judgement, your training, or your solicitor.</p></details>
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow ctr">Questions agents ask</div>
+    <h2 class="ctr">The honest answers.</h2>
+    <div class="faq">
+      <details><summary>Does it replace my CRM?</summary><p>No. Your CRM stays the source of truth. Thruley does the work around it: the follow-ups, the drafts, the bookings, the checks. It's designed to work alongside AgentBox, VaultRE, Rex and others.</p></details>
+      <details><summary>Can it send something without me knowing?</summary><p>No. Everything Thruley drafts sits in your approval queue. Anything compliance-touching or client-facing needs your explicit sign-off before it moves. That rule is structural, not a setting.</p></details>
+      <details><summary>Will my clients know I'm using it?</summary><p>Your clients only ever see you. Messages go from your address, in your voice, under the assistant name you choose. There's no Thruley branding on anything a vendor or buyer sees.</p></details>
+      <details><summary>What does it cost?</summary><p>The founding-partner pilot is free. You help us shape the product around your process, and you lock in founding pricing for life when we launch. A full-time PA costs $70&ndash;90k a year; Thruley will always be a fraction of that.</p></details>
+      <details><summary>I'm a solo agent. Is this for me?</summary><p>Especially for you. Solo agents carry the full admin load alone. Agencies get the oversight layer on top; solo agents get their evenings back.</p></details>
+      <details><summary>Is Thruley endorsed by AUSTRAC or the OFT?</summary><p>No, and be wary of anything that claims to be, because regulators don't endorse or certify software. What we do instead: every check is mapped to the specific rule that requires it, with the source named, and updated when the rules change. That's the coverage list up the page.</p></details>
+      <details><summary>Is this legal advice?</summary><p>No. Thruley automates workflows and runs checks against current requirements, and it's built to keep you inside the lines. It doesn't replace your judgement, your training, or your solicitor.</p></details>
+    </div>
   </div>
-</div></section>
+</section>
 
 <!-- FINAL -->
-<section id="apply" class="final"><div class="wrap">
-  <div class="eyebrow" style="color:var(--lime)">Founding Partners</div>
-  <h2>Shape the product. Lock in founding rates.</h2>
-  <p>We're taking a small number of agents and agencies into a free founding-partner program. You help us build it around your process, and you lock in founding pricing for life.</p>
-  <div class="price">A full-time PA costs $70–90k a year. Thruley is a fraction of that, and it never forgets a step.</div>
-  <form class="interest" action="https://hypaagency.app.n8n.cloud/webhook/thruley-register" method="POST">
-    <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
-    <input type="email" name="email" placeholder="Work email" aria-label="Work email" required>
-    <input type="text" name="agency" placeholder="Agency (optional)" aria-label="Agency">
-    <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
-    <button class="btn b-cta" type="submit" style="font-size:17px;padding:16px 34px;">Register your interest</button>
-  </form>
-  <div class="assure">No spam, no lock-in. We'll only contact you about the founding-partner program, and your details are never shared.</div>
-  <div class="scarce">Limited to a small founding cohort of South-East Queensland agents and agencies.</div>
-</div></section>
+<section id="apply" class="final">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="eyebrow ctr">Founding Partners</div>
+    <h2>Shape the product. Lock in founding rates.</h2>
+    <p class="lede ctr mx">We're taking a small number of agents and agencies into a free founding-partner program. You help us build it around your process, and you lock in founding pricing for life.</p>
+    <div class="price">A full-time PA costs $70–90k a year. Thruley is a fraction of that, and it never forgets a step.</div>
+    <form class="interest" action="https://hypaagency.app.n8n.cloud/webhook/thruley-register" method="POST">
+      <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
+      <input type="email" name="email" placeholder="Work email" aria-label="Work email" required>
+      <input type="text" name="agency" placeholder="Agency (optional)" aria-label="Agency">
+      <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
+      <button class="btn pri lg-cta" type="submit" style="padding:15px 34px">Get early access</button>
+    </form>
+    <div class="assure">No spam, no lock-in. We only contact you about the founding-partner program, and your details are never shared.</div>
+    <div class="scarce">Limited to a small founding cohort of South-East Queensland agents and agencies.</div>
+  </div>
+</section>
 
-<footer><div class="wrap foot-in">
-  <div class="logo"><span class="rv" style="font-size:24px">thruley<span class="d" style="width:6px;height:6px"></span></span></div>
-  <div style="text-align:right">Thruley · thruley.com · hello@thruley.com · Built in Australia for Australian agents.<br>
-  <span style="font-size:12.5px">&copy; 2026 Revalu Group Pty Ltd. We only use your details to contact you about Thruley, we never sell or share them, and we'll delete them on request: hello@thruley.com.</span></div>
-</div></footer>
+<footer>
+  <div class="wrap foot-in">
+    <a href="#" class="brand" aria-label="thruley home">
+      <svg viewBox="0 0 100 100" style="width:17px;height:17px" aria-hidden="true"><path d="M14 42C36 36 62 31 88 27L54 47C49 61 44 74 40 88C42 76 43 65 44 54Z" fill="#F2F5FF"/></svg>
+      <span class="navmark" style="font-size:16px">thruley</span>
+    </a>
+    <div class="fr">
+      Thruley · thruley.com · hello@thruley.com · Built in Australia for Australian agents.<br>
+      <span class="fine">© 2026 Revalu Group Pty Ltd. We only use your details to contact you about Thruley, we never sell or share them, and we'll delete them on request: hello@thruley.com.</span>
+    </div>
+  </div>
+</footer>
 
 <script>
 (function(){var p=new URLSearchParams(location.search);["utm_source","utm_medium","utm_campaign"].forEach(function(k){var el=document.querySelector('input[name="'+k+'"]');if(el&&p.get(k))el.value=p.get(k);});})();
