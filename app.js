@@ -2,7 +2,7 @@ const uiStages=[['overview','WORKSPACE OVERVIEW'],['prepare','DISCLOSURE & EVIDE
 function stage(n){
  document.querySelectorAll('[data-stage]').forEach((b,i)=>{b.setAttribute('aria-selected',String(i===n));b.tabIndex=i===n?0:-1});
  const [key,label]=uiStages[n];
- document.querySelectorAll('[data-ui-device]').forEach(image=>{image.src=`assets/ui-${key}-${image.dataset.uiDevice}-20261120.webp`;image.alt=`Current Thruley ${label.toLowerCase()} on ${image.dataset.uiDevice}, showing fictional example data`});
+ document.querySelectorAll('[data-ui-device]').forEach(image=>{image.src=`assets/ui-${key}-${image.dataset.uiDevice}-20261120-light.webp`;image.alt=`Current Thruley ${label.toLowerCase()} on ${image.dataset.uiDevice}, showing fictional example data`});
  document.querySelector('[data-ui-stage-label]').textContent=label;
 }
 document.querySelectorAll('[data-stage]').forEach(b=>{b.onclick=()=>stage(+b.dataset.stage);b.onkeydown=e=>{if(['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();const n=(+b.dataset.stage+(e.key==='ArrowRight'?1:3))%4;stage(n);document.querySelector(`[data-stage="${n}"]`).focus()}}});
