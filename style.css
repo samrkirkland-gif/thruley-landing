@@ -227,3 +227,13 @@ thruley-sphere{position:relative;display:block;width:100%;height:100%;aspect-rat
 /* Production interest registration. */
 #signup{display:block;max-width:650px;width:100%;margin-top:28px}.interest-fields{display:grid;grid-template-columns:1fr 1fr;gap:15px}.interest-fields label{display:flex;flex-direction:column;gap:7px;font-size:11px;color:#444440}.interest-fields label:last-child{grid-column:1 / -1}.interest-fields input{width:100%;border-radius:8px;padding:13px 15px;background:#fffffff2;border-color:#b9bdb8;font-size:13px}#signup>button{margin-top:16px;padding:15px 20px}#signup>button:disabled{cursor:wait;opacity:.65}.interest-honeypot{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}.form-note a{text-decoration:underline;text-underline-offset:2px}
 @media(max-width:700px){.interest-fields{grid-template-columns:1fr}.interest-fields label:last-child{grid-column:auto}#signup>button{width:100%}.mission>div:last-child{width:100%}}
+
+/* Current product captures, refreshed 20 November 2026. */
+.hardware-screen{background:#e3ebe8}
+.hardware-screen>.ui-capture{display:block;width:100%;height:100%;object-fit:fill}
+.hardware-stage>.device-caption{white-space:normal;width:100%;line-height:1.5;text-align:center}
+.oversight-art{position:absolute;inset:0;overflow:hidden;z-index:-3;border-radius:inherit;pointer-events:none}
+.oversight-artboard{position:absolute;left:50%;top:50%;width:1536px;height:1024px;transform-origin:center;background:url('assets/accountability-desk-v3.png') center/100% 100%}
+.desk-ui{position:absolute;left:0;top:0;width:390px;height:848px;overflow:hidden;border-radius:55px;transform-origin:0 0;transform:matrix3d(0.820401294632,0.190419650653,0,3.84125516681e-06,-0.343647903548,0.703371606551,0,-7.51506108756e-05,0,0,1,0,988,102,0,1)}
+.desk-ui>img{width:100%;height:100%;display:block}
+.desk-island{position:absolute;top:16px;left:148px;width:94px;height:26px;border-radius:30px;background:#030608}

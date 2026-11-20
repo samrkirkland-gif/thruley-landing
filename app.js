@@ -1,6 +1,10 @@
-const stages=[['01 / APPOINTMENT','A good start. Already organised.',['Vendor details confirmed','Appointment instructions gathered','Electronic consent requested']],['02 / PREPARATION','The details, brought together.',['Disclosure information gathered','Preferred suppliers selected','Documents ready for review']],['03 / PROGRESSION','A clear view of what comes next.',['Solicitor handoff prepared','Outstanding reports followed up','Contract milestones tracked']],['04 / SETTLEMENT','The final steps, accounted for.',['Settlement confirmation requested','Key release authority recorded','Property file ready to close']]];
-const evidence=[['Vendor identity and ownership','Vendor · Source documents reconciled','Verified'],['Appointment and agreed instructions','Agent · Form 6 preparation','Review'],['Electronic communication authority','Vendor · Consent request issued','Awaiting']];
-function stage(n){document.querySelectorAll('[data-stage]').forEach((b,i)=>{b.setAttribute('aria-selected',i===n);b.tabIndex=i===n?0:-1});document.querySelector('#stageLabel').textContent=stages[n][0];document.querySelector('#stageTitle').textContent=stages[n][1];document.querySelector('#tasks').replaceChildren(...stages[n][2].map((t,i)=>{const row=document.createElement('div');row.className='task';const mark=document.createElement('span');mark.textContent=String(i+1).padStart(2,'0');const copy=document.createElement('div');copy.textContent=n===0?evidence[i][0]:t;const sub=document.createElement('small');sub.textContent=n===0?evidence[i][1]:['Property file · Source evidence attached','Assigned professional · Action prepared','Agent · Confirmation required'][i];copy.append(sub);const status=document.createElement('em');status.className='evidence-status status-'+i;status.textContent=evidence[i][2];row.append(mark,copy,status);return row}));document.querySelectorAll('.file-pipeline span').forEach((el,i)=>el.classList.toggle('current',i===n));document.querySelector('.progress i').style.width=(n+1)*25+'%'}stage(0);
+const uiStages=[['overview','WORKSPACE OVERVIEW'],['prepare','DISCLOSURE & EVIDENCE'],['progress','REQUESTS & FOLLOW-UPS'],['settle','SETTLEMENT & ARCHIVE']];
+function stage(n){
+ document.querySelectorAll('[data-stage]').forEach((b,i)=>{b.setAttribute('aria-selected',String(i===n));b.tabIndex=i===n?0:-1});
+ const [key,label]=uiStages[n];
+ document.querySelectorAll('[data-ui-device]').forEach(image=>{image.src=`assets/ui-${key}-${image.dataset.uiDevice}-20261120.webp`;image.alt=`Current Thruley ${label.toLowerCase()} on ${image.dataset.uiDevice}, showing fictional example data`});
+ document.querySelector('[data-ui-stage-label]').textContent=label;
+}
 document.querySelectorAll('[data-stage]').forEach(b=>{b.onclick=()=>stage(+b.dataset.stage);b.onkeydown=e=>{if(['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();const n=(+b.dataset.stage+(e.key==='ArrowRight'?1:3))%4;stage(n);document.querySelector(`[data-stage="${n}"]`).focus()}}});
 const menu=document.querySelector('#menu'),nav=document.querySelector('#navigation'),island=document.querySelector('.nav-island'),islandMenu=document.querySelector('.island-menu');
 function toggleMenu(open){nav.hidden=!open;[menu,islandMenu].forEach(b=>b.setAttribute('aria-expanded',String(open)))}
@@ -21,7 +25,7 @@ window.addEventListener('resize',updateIslandMark);
 let scheduled=false;function scrollLayout(){island.classList.toggle('is-shown',window.scrollY>180);updateIslandMark();scheduled=false}window.addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(scrollLayout)}},{passive:true});scrollLayout();
 const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
 const track=document.querySelector('.story-track');document.querySelector('#next').onclick=()=>track.scrollBy({left:track.clientWidth*.8,behavior:'smooth'});document.querySelector('#prev').onclick=()=>track.scrollBy({left:-track.clientWidth*.8,behavior:'smooth'});
-const dialog=document.querySelector('#detail');document.querySelector('#approve').onclick=()=>dialog.showModal();dialog.querySelectorAll('.close,.close-detail').forEach(b=>b.onclick=()=>dialog.close());dialog.onclick=e=>{if(e.target===dialog&&e.offsetX<0)dialog.close()};
+const dialog=document.querySelector('#detail');document.querySelector('#approve')?.addEventListener('click',()=>dialog.showModal());dialog.querySelectorAll('.close,.close-detail').forEach(b=>b.onclick=()=>dialog.close());dialog.onclick=e=>{if(e.target===dialog&&e.offsetX<0)dialog.close()};
 const interestForm=document.querySelector('#signup');
 const interestEndpoint=window.THRULEY_INTEREST_ENDPOINT||'';
 if(/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(interestEndpoint))interestForm.action=interestEndpoint;
@@ -122,23 +126,12 @@ new IntersectionObserver(entries=>entries.forEach(entry=>{
 }),{threshold:.25}).observe(scope);
 
 new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('is-playing',entry.isIntersecting))).observe(document.querySelector('.oversight'));
-// Presentation-only navigation opens contextual concept notes.
-const previewNotes={Overview:'A planned agency-wide view of file activity, upcoming deadlines and prepared work.', 'Property files':'Each property connects its people, instructions, evidence and decision history.', Approvals:'Prepared messages and actions return to the authorised person for review.', 'Calendar & deadlines':'A planned calendar links appointments, evidence requests and transaction milestones.', 'People & authorities':'Keep parties, capacity, sharing instructions and file-specific authority together.', 'Disclosure & evidence':'Gather source documents and show outstanding items for professional review.', 'Suppliers & orders':'Select providers and confirm scope, cost and permissions before ordering.', Documents:'A planned document library keeps versions and source evidence connected to the file.', 'Activity & audit trail':'A planned history records prepared actions, approvals and confirmed outcomes.', 'Team & permissions':'Agency roles and permissions determine who can access and act on a file.', 'Brand & assistant':'Preview agency branding, templates, sender identity and assistant tone.', Connections:'Planned authorised connections to agency mailboxes and existing systems.', Settings:'A planned home for agency defaults and workspace preferences.'};
-document.querySelectorAll('[data-preview-nav]').forEach(button=>button.addEventListener('click',()=>{
- const title=button.dataset.previewNav;
- let note=document.querySelector('#dashConceptNote');
- if(!note){note=document.createElement('dialog');note.id='dashConceptNote';note.innerHTML='<button class="close" aria-label="Close">×</button><small>EXPLORE THE WORKSPACE</small><h2></h2><p></p>';document.body.append(note);note.querySelector('.close').onclick=()=>note.close()}
- note.querySelector('h2').textContent=title;note.querySelector('p').textContent=previewNotes[title];note.showModal();
+// Keep the current mobile capture aligned with the photographed phone as the image covers its panel.
+const deskSizer=new ResizeObserver(entries=>entries.forEach(({target,contentRect})=>{
+ const scale=Math.max(contentRect.width/1536,contentRect.height/1024);
+ target.querySelector('.oversight-artboard').style.transform=`translate(-50%,-50%) scale(${scale})`;
 }));
-document.querySelector('[data-mobile-review]').onclick=()=>document.querySelector('#detail').showModal();
-new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('is-animating',entry.isIntersecting))).observe(document.querySelector('.device'));
-// Keep UI pixels proportional inside photographic screen openings at every viewport.
-const screenSizer=new ResizeObserver(entries=>entries.forEach(entry=>{
- const content=entry.target.querySelector('.screen-native');
- const width=Number(content.dataset.nativeWidth);
- content.style.transform=`scale(${entry.target.clientWidth/width})`;
-}));
-document.querySelectorAll('.hardware-screen').forEach(screen=>screenSizer.observe(screen));
+deskSizer.observe(document.querySelector('.oversight-art'));
 
 const sourceTrack=document.querySelector('.source-carousel .source-logos');
 const sourceOriginals=[...sourceTrack.children];
